@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@mixin ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+@mixin m-ellipsis($line){
+  display:-webkit-box;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$line;
+  text-overflow: ellipsis;
+  word-break:break-all;
+}
+
+//box-sizing
+@mixin box-sizing(){
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+}
+
+@mixin float-clear{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+// 스프라이트
+// @mixin sp_img($pst-x,$pst-y) {
+// background: url(../img/.png) no-repeat;
+// background-position:$pst-x $pst-y;
+// }
