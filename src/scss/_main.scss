@@ -1,5 +1,6 @@
 .wrap{
     position: relative;
+    min-width: 320px;
     background: linear-gradient(90deg, rgba(50, 93, 127, 1) -27%,rgba(109,92,126,1));
     background-color: #1f2029;
     background-color: #264861;
@@ -8,6 +9,7 @@
 .content{
     overflow-x: hidden;
     position: relative;
+    word-break: break-word;
     z-index: 5;
 }
 
@@ -21,6 +23,8 @@ header{
     text-align: right;
     z-index: 100;
 }
+
+/* gnb */
 .gnb{
     display: inline-block;
     ul:after{
@@ -37,7 +41,7 @@ header{
             position: relative;
             padding: 20px 10px;
             font-family: robotoMedium;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 24px;
             color: $primary-color-white;
             &:before{
@@ -63,35 +67,44 @@ header{
     }
 }
 
+/* footer */
+footer{
+    padding: 120px 0 50px;
+    font-size: 12px;
+    color: $primary-color-white;
+    vertical-align: middle;
+    text-align: center;
+}
+
 /* spot */
 .spot{
     position: relative;
     height: 100vh;
-    .main-title-box{
+    .title-box{
         position: absolute;
         top: 50%;
         left: 20px;
+        right: 20px;
         transform: translateY(-50%);
-        .sub-title{
-            font-family: robotoMedium;
-            font-size: 35px;
-            line-height: 40px;
-            color: #f2727f;
-        }
-        .title{
-            font-family: robotoBold;
-            font-size: 110px;
-            line-height: 120px;
-            letter-spacing: 3px;
-            color: #fff;
-            text-transform: uppercase;
-        }
+    }
+    .sub-title{
+        font-family: robotoMedium;
+        font-size: 2vw;
+        line-height: 1;
+        color: $primary-color-red;
+    }
+    .title{
+        font-family: robotoBold;
+        font-size: 7.5vw;
+        line-height: 1;
+        letter-spacing: 3px;
+        color: $primary-color-white;
+        text-transform: uppercase;
     }
 }
 
 /* work */
 .work{
-    height: 100vh;
     .work-img{
         height: 350px;
         background-position: 50% 50%;
@@ -108,6 +121,91 @@ header{
         }
         &.no4{
             background-image: url(../img/work4.png);
+        }
+        &.no5{
+            background-image: url(../img/work5.png);
+        }
+    }
+}
+
+/* contact */
+.contact{
+    padding-top: 80px;
+    .contact-area{
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .row{
+        position: relative;
+        margin-bottom: 25px;
+    }
+    .input-title{
+        position: absolute;
+        top: .65rem;
+        left: .5rem;
+        transition: all .3s;
+        font-size: 14px;
+    }
+    input{
+        padding: 0 9px;
+        border: none;
+        border-bottom: 1px solid silver;
+        height: 40px;
+        width: 100%;
+        font-size: 16px;
+        outline: none;
+    }
+    textarea{
+        width: 100%;
+        height: 270px;
+        padding: 9px;
+        font-size: 16px;
+        resize: none;
+        border: none;
+        border-bottom: 1px silver solid;
+        overflow-y: auto;
+        outline: none;
+    }
+    .btn-submit{
+        position: relative;
+        width: 100%;
+        height: 48px;
+        font-family: robotoMedium;
+        font-size: 16px;
+        color: $primary-color-white;
+        background-color: rgba(255, 100, 116, 0.66);
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-property: color;
+        transition-property: color;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        outline: none;
+        &:before{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $primary-color-red;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+        &:hover:before{
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
         }
     }
 }
@@ -131,5 +229,41 @@ header{
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         cursor: context-menu;
+    }
+    .bg-img{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: 50%;
+        background-size: cover;
+        &.pattern1{
+            top: 0px;
+            background-image: url(../img/bg_pattern1.png);
+        }
+        &.pattern2{
+            top: 0px;
+            background-image: url(../img/bg_pattern2.png);
+        }
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .spot{
+        .title{
+            font-size: 149px;
+        }
+        .sub-title{
+            font-size: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .spot{
+        .title{
+            font-size: 46px;
+        }
     }
 }
