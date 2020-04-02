@@ -13,9 +13,9 @@
             <h1 class="blind">chaelin.Kim</h1>
             <nav class="gnb">
                 <ul>
-                    <li class="gnb-item"><a href="#none">Works</a></li>
-                    <li class="gnb-item"><a href="#none">Capability</a></li>
-                    <li class="gnb-item"><a href="#none">Contact</a></li>
+                    <li id="gnb-work" class="gnb-item"><a href="#none">Works</a></li>
+                    <li id="gnb-capability" class="gnb-item"><a href="#none">Capability</a></li>
+                    <li id="gnb-contact" class="gnb-item"><a href="#none">Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -32,7 +32,7 @@
                     <ul class="work-list swiper-wrapper">
                         <li class="swiper-slide">
                             <div class="work-img no1"></div>
-                            <h4 class="work-title">제목</h4>
+                            <h4 class="work-title">GROWTHY brand</h4>
                             <div class="work-tag">
                                 <span>#눈누</span>
                                 <span>#난나</span>
@@ -40,7 +40,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="work-img no2"></div>
-                            <h4 class="work-title">제목</h4>
+                            <h4 class="work-title">BT21 FESTIVAL2019, BT21 BABY</h4>
                             <div class="work-tag">
                                 <span>#눈누</span>
                                 <span>#난나</span>
@@ -48,7 +48,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="work-img no3"></div>
-                            <h4 class="work-title">제목</h4>
+                            <h4 class="work-title">파트너스퀘어 홍대</h4>
                             <div class="work-tag">
                                 <span>#눈누</span>
                                 <span>#난나</span>
@@ -56,7 +56,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="work-img no4"></div>
-                            <h4 class="work-title">제목</h4>
+                            <h4 class="work-title">WORK PLACE</h4>
                             <div class="work-tag">
                                 <span>#눈누</span>
                                 <span>#난나</span>
@@ -64,7 +64,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="work-img no5"></div>
-                            <h4 class="work-title">제목</h4>
+                            <h4 class="work-title">DEVIEW2018</h4>
                             <div class="work-tag">
                                 <span>#눈누</span>
                                 <span>#난나</span>
@@ -119,26 +119,107 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="./src/js/swiper.min.js"></script>
     <script>
+        var swiper = new Swiper('.swiper-container', {
+            // centeredSlides: true,
+            slidesOffsetBefore: 20,
+            slidesOffsetAfter: 20,
+            speed: 500,
+            breakpoints: {
+                1281: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 30,
+                },
+                769: {
+                    slidesPerView: 2.3,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 1.3,
+                    spaceBetween: 20,
+                },
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                },
+            }
+        });
 
-    var swiper = new Swiper('.swiper-container', {
-        loop: false,
-        centeredSlides: true,
-        speed: 600,
-        breakpoints: {
-            1220: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            700: {
-                slidesPerView: 1.3,
-                spaceBetween: 30,
-            },
-            500: {
-                slidesPerView: 1.3,
-                spaceBetween: 20,
-            },
+        (function($) { "use strict";
+        // spot Parallax
+        function scrollBanner() {
+            $(document).on('scroll', function(){
+                var scrollPos = $(this).scrollTop();
+                $('.title-box').css({
+                    'opacity' : 1-(scrollPos/500)
+                });
+                $('.pattern1').css({
+                    'top' : (scrollPos/-3.5)+'px'
+                });
+                $('.pattern2').css({
+                    'top' : (scrollPos/-2.8)+'px'
+                });
+                $('.bg-text').css({
+                    'top' : (scrollPos/-2)+'px'
+                });
+            });
         }
-    });
+        scrollBanner();
+
+        // gnb
+        $("#gnb-work").on("click", function () {
+            var topPosition = $(".work").offset().top;
+            $('body, html').stop();
+            $('body, html').animate({
+                scrollTop: topPosition
+            },"very slow");
+        });
+        $("#gnb-capability").on("click", function () {
+            var topPosition = $(".capability").offset().top;
+            $('body, html').stop();
+            $('body, html').animate({
+                scrollTop: topPosition
+            },"very slow");
+        });
+        $("#gnb-contact").on("click", function () {
+            var topPosition = $(".contact").offset().top;
+            $('body, html').stop();
+            $('body, html').animate({
+                scrollTop: topPosition
+            },"very slow");
+        });
+        $(".gnb-item").on("click", function () {
+            $('.gnb-item').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        // contact 인풋
+        $('.row input, .row textarea').bind('focus', function() {
+            $(this).parent().addClass('active');
+        });
+        $('.row input, .row textarea').blur(function() {
+            $(this).parent().removeClass('active');
+        });
+
+        //Scroll back to top
+        $(document).ready(function() {
+            var offset = 300;
+            var duration = 400;
+            jQuery(window).on('scroll', function() {
+                if (jQuery(this).scrollTop() > offset) {
+                    jQuery('.scroll-to-top').addClass('active-arrow');
+                } else {
+                    jQuery('.scroll-to-top').removeClass('active-arrow');
+                }
+            });
+            jQuery('.scroll-to-top').on('click', function(event) {
+                event.preventDefault();
+                jQuery('html, body').animate({scrollTop: 0}, duration);
+                return false;
+            })
+        });
+        })(jQuery);
     </script>
     <!-- <script>
     $(function () {
@@ -296,106 +377,5 @@
         }
     });
 </script> -->
-
-<script>
-    (function($) { "use strict";
-    // spot Parallax
-    function scrollBanner() {
-        $(document).on('scroll', function(){
-            var scrollPos = $(this).scrollTop();
-            $('.title-box').css({
-                'opacity' : 1-(scrollPos/500)
-            });
-            $('.pattern1').css({
-                'top' : (scrollPos/-3.5)+'px'
-            });
-            $('.pattern2').css({
-                'top' : (scrollPos/-2.8)+'px'
-            });
-            $('.bg-text').css({
-                'top' : (scrollPos/-2)+'px'
-            });
-        });
-    }
-    scrollBanner();
-
-    //Page cursors
-    document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
-        t.style.left = n.clientX + "px",
-        t.style.top = n.clientY + "px",
-        e.style.left = n.clientX + "px",
-        e.style.top = n.clientY + "px",
-        i.style.left = n.clientX + "px",
-        i.style.top = n.clientY + "px"
-    });
-    var t = document.getElementById("cursor"),
-    e = document.getElementById("cursor2"),
-    i = document.getElementById("cursor3");
-    function n(t) {
-        e.classList.add("hover"), i.classList.add("hover")
-    }
-    function s(t) {
-        e.classList.remove("hover"), i.classList.remove("hover")
-    }
-    s();
-    for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
-        o(r[a])
-    }
-    function o(t) {
-        t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
-    }
-
-    // contact
-    $('.row').click(function () {
-        $(this).addClass('active');
-    });
-
-
-    //Scroll back to top
-    $(document).ready(function() {
-        var offset = 300;
-        var duration = 400;
-        jQuery(window).on('scroll', function() {
-            if (jQuery(this).scrollTop() > offset) {
-                jQuery('.scroll-to-top').addClass('active-arrow');
-            } else {
-                jQuery('.scroll-to-top').removeClass('active-arrow');
-            }
-        });
-        jQuery('.scroll-to-top').on('click', function(event) {
-            event.preventDefault();
-            jQuery('html, body').animate({scrollTop: 0}, duration);
-            return false;
-        })
-
-        /* Hero Case study images */
-        $('.case-study-name:nth-child(1)').on('mouseenter', function() {
-            $('.case-study-name.active').removeClass('active');
-            $('.case-study-images li.show').removeClass("show");
-            $('.case-study-images li:nth-child(1)').addClass("show");
-            $('.case-study-name:nth-child(1)').addClass('active');
-        })
-        $('.case-study-name:nth-child(2)').on('mouseenter', function() {
-            $('.case-study-name.active').removeClass('active');
-            $('.case-study-images li.show').removeClass("show");
-            $('.case-study-images li:nth-child(2)').addClass("show");
-            $('.case-study-name:nth-child(2)').addClass('active');
-        })
-        $('.case-study-name:nth-child(3)').on('mouseenter', function() {
-            $('.case-study-name.active').removeClass('active');
-            $('.case-study-images li.show').removeClass("show");
-            $('.case-study-images li:nth-child(3)').addClass("show");
-            $('.case-study-name:nth-child(3)').addClass('active');
-        })
-        $('.case-study-name:nth-child(4)').on('mouseenter', function() {
-            $('.case-study-name.active').removeClass('active');
-            $('.case-study-images li.show').removeClass("show");
-            $('.case-study-images li:nth-child(4)').addClass("show");
-            $('.case-study-name:nth-child(4)').addClass('active');
-        })
-        $('.case-study-name:nth-child(1)').trigger('mouseenter')
-    });
-    })(jQuery);
-</script>
 </body>
 </html>
