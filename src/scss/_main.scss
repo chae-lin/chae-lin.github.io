@@ -17,16 +17,17 @@ header{
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 50px;
-    text-align: right;
     z-index: 100;
 }
 
 /* gnb */
 .gnb{
-    display: inline-block;
-    ul:after{
-        @include float-clear;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: right;
+    ul{
+        display: inline-block;
     }
     .gnb-item{
         float: left;
@@ -106,7 +107,11 @@ footer{
 
 /* work */
 .work{
-    padding: 100px 0;
+    height: 100vh;
+    .work-area{
+        top: 50%;
+        transform: translateY(-50%);
+    }
     .swiper-slide{
         position: relative;
         max-width: 700px;
@@ -174,8 +179,55 @@ footer{
 
 /* capability */
 .capability{
-    padding: 100px 0;
+    padding: 300px 0;
     color: $primary-color-white;
+    .graph-area{
+        display: table;
+        table-layout: fixed;
+        margin: 0 auto;
+    }
+    .graph-item{
+        display: table-cell;
+        width: 260px;
+        padding: 0 30px;
+        vertical-align: top;
+        text-align: center;
+        &.a_active{
+            .graph-title,
+            .etc-list{
+                opacity: 1;
+            }
+        }
+    }
+    .graph-title{
+        display: block;
+        padding-bottom: 20px;
+        font-size: 25px;
+        line-height: 35px;
+        color: $primary-color-white;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        -webkit-transition: opacity .5s ease-in-out;
+    }
+    .graph-circle{
+        width: 200px;
+        height: 200px;
+    }
+    .etc-list{
+        margin: 28px 30px 28px;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: left;
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        -webkit-transition: opacity .5s ease-in-out;
+        li{
+            margin-bottom: 7px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 
 /* contact */
@@ -321,4 +373,9 @@ footer{
             font-size: 46px;
         }
     }
+}
+
+canvas{
+    width: 200px;
+    height: 200px;
 }

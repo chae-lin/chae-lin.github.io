@@ -280,20 +280,19 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 50px;
-  text-align: right;
   z-index: 100;
 }
 
 /* gnb */
 .gnb {
-  display: inline-block;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: right;
 }
 
-.gnb ul:after {
-  content: '';
-  clear: both;
-  display: table;
+.gnb ul {
+  display: inline-block;
 }
 
 .gnb .gnb-item {
@@ -381,7 +380,12 @@ footer {
 
 /* work */
 .work {
-  padding: 100px 0;
+  height: 100vh;
+}
+
+.work .work-area {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .work .swiper-slide {
@@ -459,8 +463,61 @@ footer {
 
 /* capability */
 .capability {
-  padding: 100px 0;
+  padding: 300px 0;
   color: #fff;
+}
+
+.capability .graph-area {
+  display: table;
+  table-layout: fixed;
+  margin: 0 auto;
+}
+
+.capability .graph-item {
+  display: table-cell;
+  width: 260px;
+  padding: 0 30px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.capability .graph-item.a_active .graph-title,
+.capability .graph-item.a_active .etc-list {
+  opacity: 1;
+}
+
+.capability .graph-title {
+  display: block;
+  padding-bottom: 20px;
+  font-size: 25px;
+  line-height: 35px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
+
+.capability .graph-circle {
+  width: 200px;
+  height: 200px;
+}
+
+.capability .etc-list {
+  margin: 28px 30px 28px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
+
+.capability .etc-list li {
+  margin-bottom: 7px;
+}
+
+.capability .etc-list li:last-child {
+  margin-bottom: 0;
 }
 
 /* contact */
@@ -612,4 +669,9 @@ footer {
   .spot .title {
     font-size: 46px;
   }
+}
+
+canvas {
+  width: 200px;
+  height: 200px;
 }
