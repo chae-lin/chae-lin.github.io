@@ -6,6 +6,9 @@ $(function () {
             $('.title-box').css({
                 'opacity' : 1-(scrollPos/600)
             });
+            $('.btn-dw').css({
+                'opacity' : 1-(scrollPos/300)
+            });
             $('.pattern1').css({
                 'top' : (scrollPos/-3.5)+'px'
             });
@@ -24,24 +27,29 @@ $(function () {
         var topPosition = $(".work").offset().top;
         $('body, html').animate({
             scrollTop: topPosition
-        },"very slow");
+        },800);
     });
     $("#gnb-capability").on("click", function () {
         var topPosition = $(".capability").offset().top;
         $('body, html').animate({
             scrollTop: topPosition
-        },"very slow");
+        },800);
     });
     $("#gnb-contact").on("click", function () {
         var topPosition = $(".contact").offset().top;
         $('body, html').animate({
             scrollTop: topPosition
-        },"very slow");
+        },800);
+    });
+    $(".btn-dw").on("click", function () {
+        var topPosition = $(".work").offset().top;
+        $('body, html').animate({
+            scrollTop: topPosition
+        },800);
     });
 
     // work swiper
-    var swiper = new Swiper('.swiper-container', {
-        // centeredSlides: true,
+    var swiper = new Swiper('.work-swiper', {
         slidesOffsetBefore: 20,
         slidesOffsetAfter: 20,
         speed: 500,
@@ -55,16 +63,24 @@ $(function () {
                 spaceBetween: 20,
             },
             500: {
-                slidesPerView: 1.3,
-                spaceBetween: 20,
+                centeredSlides: true,
+                slidesPerView: 1.5,
+                spaceBetween: 5,
+                loop: true,
+                pagination: {
+                  el: '.work-pagination',
+                  clickable: true,
+                },
             },
             0: {
                 slidesPerView: 1,
-                spaceBetween: 20,
+                spaceBetween: 5,
                 slidesOffsetBefore: 0,
                 slidesOffsetAfter: 0,
+                loop: true,
                 pagination: {
-                  el: '.swiper-pagination',
+                  el: '.work-pagination',
+                  clickable: true,
                 },
             },
         }
