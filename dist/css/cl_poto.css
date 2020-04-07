@@ -362,9 +362,50 @@ footer {
   -webkit-justify-content: center;
 }
 
+.spot .bg-box {
+  z-index: -1;
+}
+
+.spot .bg-box .bg-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 2vh;
+  background: linear-gradient(90deg, rgba(90, 90, 90, 0) 20%, rgba(90, 90, 90, 0.15));
+  font-family: robotoBold;
+  font-size: 14vh;
+  line-height: 1;
+  color: #45464e;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  writing-mode: vertical-lr;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: context-menu;
+}
+
+.spot .bg-box .bg-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: 50%;
+  background-size: cover;
+}
+
+.spot .bg-box .bg-img.pattern1 {
+  top: 0px;
+  background-image: url(../img/bg_pattern1.png);
+}
+
+.spot .bg-box .bg-img.pattern2 {
+  top: 0px;
+  background-image: url(../img/bg_pattern2.png);
+}
+
 .spot .title-box {
   padding: 0 20px;
-  z-index: 1;
 }
 
 .spot .sub-title {
@@ -548,7 +589,7 @@ footer {
 
 /* capability */
 .capability {
-  padding: 300px 0;
+  padding: 100px 0 150px;
   color: #fff;
 }
 
@@ -700,48 +741,47 @@ footer {
   transition-timing-function: ease-out;
 }
 
+.contact .btn-submit:after {
+  content: '';
+  position: absolute;
+  border: rgba(0, 0, 0, 0) solid 6px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
 .contact .btn-submit:hover:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
-/* bg-box */
-.bg-box .bg-text {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 2vh;
-  background: linear-gradient(90deg, rgba(90, 90, 90, 0) 20%, rgba(90, 90, 90, 0.15));
-  font-family: robotoBold;
-  font-size: 14vh;
-  line-height: 1;
-  color: #45464e;
-  -webkit-writing-mode: vertical-lr;
-  -ms-writing-mode: tb-lr;
-  writing-mode: vertical-lr;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: context-menu;
+.contact .btn-submit.a-submit:after {
+  border-color: #f2727f;
+  -webkit-animation-name: hvr-ripple-out;
+  animation-name: hvr-ripple-out;
 }
 
-.bg-box .bg-img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: 50%;
-  background-size: cover;
+@-webkit-keyframes hvr-ripple-out {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
 }
 
-.bg-box .bg-img.pattern1 {
-  top: 0px;
-  background-image: url(../img/bg_pattern1.png);
-}
-
-.bg-box .bg-img.pattern2 {
-  top: 0px;
-  background-image: url(../img/bg_pattern2.png);
+@keyframes hvr-ripple-out {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {

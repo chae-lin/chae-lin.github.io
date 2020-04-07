@@ -1,26 +1,60 @@
 $(function () {
-    // spot Parallax
-    function scrollBanner() {
-        $(document).on('scroll', function(){
-            var scrollPos = $(this).scrollTop();
-            $('.title-box').css({
-                'opacity' : 1-(scrollPos/600)
-            });
-            $('.btn-dw').css({
-                'opacity' : 1-(scrollPos/300)
-            });
-            $('.pattern1').css({
-                'top' : (scrollPos/-3.5)+'px'
-            });
-            $('.pattern2').css({
-                'top' : (scrollPos/-2.8)+'px'
-            });
-            $('.bg-text').css({
-                'top' : (scrollPos/-2)+'px'
-            });
+
+    $(document).on('scroll', function(){
+        var scrollPos = $(this).scrollTop();
+        var secPos0 = $('.spot').offset().top;
+        var secPos1 = $('.work').offset().top;
+        var secPos2 = $('.capability').offset().top - 200;
+        var secPos3 = $('.contact').offset().top - 200;
+
+        // spot Parallax
+        $('.title-box').css({
+            'opacity' : 1-(scrollPos/600)
         });
-    }
-    scrollBanner();
+        $('.btn-dw').css({
+            'opacity' : 1-(scrollPos/300)
+        });
+        $('.pattern1').css({
+            'top' : (scrollPos/-3.5)+'px'
+        });
+        $('.pattern2').css({
+            'top' : (scrollPos/-2.8)+'px'
+        });
+        $('.bg-text').css({
+            'top' : (scrollPos/-2)+'px'
+        });
+
+        // gnb
+        if (scrollPos >= secPos0 && scrollPos < secPos1){
+            $('.gnb-item').removeClass('selected');
+        }
+        else if (scrollPos >= secPos1 && scrollPos < secPos2){
+            $('.gnb-item').removeClass('selected');
+            $('#gnb-work').addClass('selected');
+        }
+        else if (scrollPos >= secPos2 && scrollPos < secPos3) {
+            $('.gnb-item').removeClass('selected');
+            $('#gnb-capability').addClass('selected');
+        }
+        else if (scrollPos >= secPos3) {
+            $('.gnb-item').removeClass('selected');
+            $('#gnb-contact').addClass('selected');
+        };
+
+        // capability
+        if (scrollPos >= Math.ceil($('.capability').offset().top - 200)) {
+            $('.graph-circle').easyPieChart({
+                barColor: '#f2727f',
+                trackColor: '#1f2029',
+                scaleColor: '#6f6f6f',
+                lineCap: 'round',
+                lineWidth: 30,
+                size: 200,
+                animate: 1000,
+            });
+            $('.graph-item').addClass('a_active');
+        };
+    });
 
     // gnb
     $("#gnb-work").on("click", function () {
@@ -86,28 +120,28 @@ $(function () {
         }
     });
 
-    // capability
-    $(window).scroll(function() {
-        if ($(this).scrollTop() >= Math.ceil($('.capability').offset().top)) {
-            $('.graph-circle').easyPieChart({
-                barColor: '#f2727f',
-                trackColor: '#1f2029',
-                scaleColor: '#6f6f6f',
-                lineCap: 'round',
-                lineWidth: 30,
-                size: 200,
-                animate: 1000,
-            });
-            $('.graph-item').addClass("a_active");
-        }
-    });
-
     // contact 인풋
-    $('.row input, .row textarea').bind('focus', function() {
+    $('.row input, .row textarea').focus(function() {
         $(this).parent().addClass('active');
     });
     $('.row input, .row textarea').blur(function() {
-        $(this).parent().removeClass('active');
+        var name_result = $('#username').val();
+        var email_result = $('#email').val();
+        var msg_result = $('#msg').val();
+        if (!name_result) {
+            $('#username').parent().removeClass('active');
+        }
+        if (!email_result) {
+            $('#email').parent().removeClass('active');
+        }
+        if (!msg_result) {
+            $('#msg').parent().removeClass('active');
+        }
+        if (name_result && email_result &&  msg_result) {
+            $('.btn-submit').addClass('a-submit');
+        }else{
+            $('.btn-submit').removeClass('a-submit');
+        }
     });
 
 });
