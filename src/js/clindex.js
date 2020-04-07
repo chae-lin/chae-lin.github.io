@@ -1,5 +1,9 @@
 $(function () {
 
+    $(window).load(function () {
+        $('.preloader').fadeOut();
+    });
+
     $(document).on('scroll', function(){
         var scrollPos = $(this).scrollTop();
         var secPos0 = $('.spot').offset().top;
