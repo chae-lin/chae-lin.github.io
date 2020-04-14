@@ -9,12 +9,15 @@
     <script src="./src/js/jquery-2.2.4.min.js"></script>
     <script src="./src/js/swiper.min.js"></script>
     <script src="./src/js/jquery.easypiechart.min.js"></script>
-    <script src="./src/js/clindex.js"></script>
+    <script src="./src/js/cl_poto.js"></script>
 </head>
 <body>
+    <!-- preloader -->
     <div class="preloader" style="style:none;">
-        <div class="loader-img"></div>
+        <div class="loader"></div>
     </div>
+    <!-- //preloader -->
+    <!-- 본문 -->
     <div class="wrap">
         <header>
             <h1 class="blind">chaelin.Kim</h1>
@@ -50,7 +53,7 @@
                     <div class="work-swiper">
                         <ul class="work-list swiper-wrapper">
                             <li class="swiper-slide">
-                                <a href="#">
+                                <a href="#" class="work-link">
                                     <div class="work-img no1"></div>
                                     <h4 class="work-title">GROWTHY brand</h4>
                                     <div class="work-tag">
@@ -61,7 +64,7 @@
                                 </a>
                             </li>
                             <li class="swiper-slide">
-                                <a href="#">
+                                <a href="#" class="work-link">
                                     <div class="work-img no2"></div>
                                     <h4 class="work-title">BT21 FESTIVAL2019, BT21 BABY</h4>
                                     <div class="work-tag">
@@ -73,7 +76,7 @@
                                 </a>
                             </li>
                             <li class="swiper-slide">
-                                <a href="#">
+                                <a href="#" class="work-link">
                                     <div class="work-img no3"></div>
                                     <h4 class="work-title">파트너스퀘어 홍대</h4>
                                     <div class="work-tag">
@@ -83,7 +86,7 @@
                                 </a>
                             </li>
                             <li class="swiper-slide">
-                                <a href="#">
+                                <a href="#" class="work-link">
                                     <div class="work-img no4"></div>
                                     <h4 class="work-title">WORK PLACE</h4>
                                     <div class="work-tag">
@@ -95,7 +98,7 @@
                                 </a>
                             </li>
                             <li class="swiper-slide">
-                                <a href="#">
+                                <a href="#" class="work-link">
                                     <div class="work-img no5"></div>
                                     <h4 class="work-title">DEVIEW2018</h4>
                                     <div class="work-tag">
@@ -166,27 +169,191 @@
         <footer>
             <span>Copyrightⓒ2020 / CL.All rights reserved.</span>
         </footer>
-        <div class="detail-modal">
+    </div>
+    <!-- //본문 -->
+    <!-- 프로젝트 상세 팝업 -->
+    <div class="modal-project">
+        <div class="project-swiper">
+            <ul class="project-list swiper-wrapper">
+                <li class="swiper-slide">
+                    <div class="project-top">
+                        <h5 class="project-title">이름</h5>
+                        <strong>섭섭</strong>
+                    </div>
+                    <div class="project-summary">
+                        <h6>Summary</h6>
+                        <dl>
+                            <div class="summary-box">
+                                <dt>프로젝트 기간</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>사이트 특징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>크로스브라우징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>담당업무</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="project-overview">
+                        <h6>Overview</h6>
+                        <img src="" alt="">
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div class="project-top">
+                        <h5 class="project-title">이름</h5>
+                        <strong>섭섭</strong>
+                    </div>
+                    <div class="project-summary">
+                        <h6>Summary</h6>
+                        <dl>
+                            <div class="summary-box">
+                                <dt>프로젝트 기간</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>사이트 특징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>크로스브라우징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>담당업무</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="project-overview">
+                        <h6>Overview</h6>
+                        <img src="" alt="">
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div class="project-top">
+                        <h5 class="project-title">이름</h5>
+                        <strong>섭섭</strong>
+                    </div>
+                    <div class="project-summary">
+                        <h6>Summary</h6>
+                        <dl>
+                            <div class="summary-box">
+                                <dt>프로젝트 기간</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>사이트 특징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>크로스브라우징</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="summary-box">
+                                <dt>담당업무</dt>
+                                <dd>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="project-overview">
+                        <h6>Overview</h6>
+                        <img src="" alt="">
+                    </div>
+                </li>
+            </ul>
+            <div class="project-arrow">
+                <div class="btn-arrow next"></div>
+                <div class="btn-arrow prev"></div>
+            </div>
+        </div>
+        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+    </div>
+    <!-- //프로젝트 상세 팝업 -->
 
+    <!--[if lte IE 9]>
+    <div class="notice-update-wrap">
+        <div class="notice-update">
+            <strong>브라우저 업데이트 안내 (Browser update instructions)</strong>
+            <p>
+            현재 사용하고 계신 브라우저의 버전이 낮아 원활한 서비스를 제공할 수 없으니<br>
+            쾌적한 인터넷 환경을 위해 보안과 속도가 강화된 브라우저로 업그레이드 하시기 바랍니다.<br><br>
+            You are using an outdated browser! Please upgrade your browser.
+            </p>
+            <a class="update-link" href="http://browsehappy.com/" target="_blank">>upgrade</a>
         </div>
     </div>
+    <![endif]-->
+
     <script>
         (function($) { "use strict";
-        // $(window).scroll(function() {
-        //     if ($(this).scrollTop() >= Math.ceil($('.capability').offset().top)) {
-        //         $('.graph-circle').easyPieChart({
-        //             barColor: '#f2727f',
-        //             trackColor: '#1f2029',
-        //             scaleColor: '#fff',
-        //             lineCap: 'round',
-        //             lineWidth: 30,
-        //             size: 200,
-        //             animate: 1000,
-        //         });
-        //         $('.graph-item').addClass("fad");
-        //     } else {
-        //     }
-        // });
 
         //Scroll back to top
         $(document).ready(function() {
@@ -205,6 +372,61 @@
                 return false;
             })
         });
+
+
+
+        var getUrl = location.href, getLastUrl = getUrl.slice(getUrl.lastIndexOf('/') + 1, getUrl.length);
+
+        var projectSwiper = new Swiper('.project-swiper', {
+            slidesPerView: 1,
+            simulateTouch: false,
+            autoHeight: true,
+            speed: 700,
+            navigation: {
+                nextEl: '.btn-arrow.next',
+                prevEl: '.btn-arrow.prev'
+            },
+        });
+
+        $('.work-link').click(function () {
+            var num = $(this).parent().index();
+            projectSwiper.slideTo(num, 0);
+            $('.modal-project').addClass('active');
+            $('body').addClass('scroll-hide');
+        });
+        $('.btn-close').click(function () {
+            $('.modal-project').removeClass('active');
+            $('body').removeClass('scroll-hide');
+        });
+        $('.btn-close').one('click',function () {
+            if (getLastUrl.indexOf('project') == 1) {
+                var stateObj = {foo : "bar"};
+                history.pushState(stateObj, "page 2", "index.html");
+            }
+        });
+        function removeUrl() {
+            var stateObj = {foo : "bar"};
+            history.pushState(stateObj, "page 2", "index.html");
+        }
+        if (getLastUrl == '#project1') {
+            projectSwiper.slideTo(0, 0);
+            $('.modal-project').addClass('active');
+        } else if (getLastUrl == '#project2') {
+            projectSwiper.slideTo(1, 0);
+            $('.modal-project').addClass('active');
+        } else if (getLastUrl == '#project3') {
+            projectSwiper.slideTo(2, 0);
+            $('.modal-project').addClass('active');
+        } else if (getLastUrl == '#project4') {
+            projectSwiper.slideTo(3, 0);
+            $('.modal-project').addClass('active');
+        } else if (getLastUrl == '#project5') {
+            projectSwiper.slideTo(4, 0);
+            $('.modal-project').addClass('active');
+        } else if (getLastUrl == '#project6') {
+            projectSwiper.slideTo(5, 0);
+            $('.modal-project').addClass('active');
+        }
         })(jQuery);
     </script>
 </body>

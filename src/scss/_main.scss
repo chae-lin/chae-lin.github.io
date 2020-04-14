@@ -4,18 +4,66 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 500;
+    z-index: 400;
     background-color: #1f2029;
-    .loader-box{
+    .loader{
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 120px;
-        height: 120px;
-        margin: -60px 0 0 -60px;
-        background: url(../img/img_preloader.gif) no-repeat;
+        width: 64px;
+        height: 64px;
+        margin: -32px 0  0 -32px;
+        &:before, &:after {
+            content: "";
+            position: relative;
+            display: block;
+        }
+        &:before {
+            animation: spinner 2.5s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            width: 100%;
+            height: 100%;
+            background-color: $primary-color-red;
+        }
+        &:after {
+            animation: shadow 2.5s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            bottom: -15px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: rgba(#fff,0.2);
+        }
     }
 }
+@-webkit-keyframes spinner {
+    50% {
+      border-radius: 50%;
+      transform: scale(0.5) rotate(360deg);
+    }
+    100% {
+      transform: scale(1) rotate(720deg);
+    }
+}
+@keyframes spinner {
+  50% {
+    border-radius: 50%;
+    transform: scale(0.5) rotate(360deg);
+  }
+  100% {
+    transform: scale(1) rotate(720deg);
+  }
+}
+@-webkit-keyframes shadow {
+    50% {
+      transform: scale(0.5);
+      background-color: rgba(#000,0.1);
+    }
+}
+@keyframes shadow {
+  50% {
+    transform: scale(0.5);
+    background-color: rgba(#000,0.1);
+  }
+}
+
 .wrap{
     position: relative;
     min-width: 320px;
@@ -110,6 +158,7 @@ footer{
     -webkit-justify-content: center;
 
     .bg-box{
+        position: relative;
         z-index: -1;
         .bg-text{
             position: fixed;
@@ -126,7 +175,6 @@ footer{
             writing-mode: vertical-lr;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: context-menu;
         }
         .bg-img{
             position: fixed;
@@ -244,25 +292,25 @@ footer{
         text-align: right;
         transition: all .1s ease;
         -webkit-transition: all .1s ease;
-        a{
-            display: block;
-            position: relative;
+    }
+    .work-link{
+        display: block;
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(31, 32, 41, 0.2);
+        }
+        &:hover{
             &:before{
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(31, 32, 41, 0.2);
+                background-color: rgba(31, 32, 41, 0);
             }
-            &:hover{
-                &:before{
-                    background-color: rgba(31, 32, 41, 0);
-                }
-                .work-img{
-                    border-width: 0;
-                }
+            .work-img{
+                border-width: 0;
             }
         }
     }
@@ -273,7 +321,7 @@ footer{
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
-        border: 8px solid #fff;
+        border: 6px solid #fff;
         -webkit-transition: all .3s;
         transition: all .3s;
         &.no1{
@@ -470,6 +518,120 @@ footer{
         }
     }
 }
+
+/* detail-modal */
+.modal-project{
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    transition: all .8s;
+    z-index: 300;
+    &.active{
+        top: 0;
+    }
+    .project-top{
+        position: relative;
+        height: 37.77rem;
+        text-align: center;
+        font-size: 0;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .project-summary{
+        width: 1080px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+    .project-overview{
+        width: 1080px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+    .btn-arrow{
+        position: absolute;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 10;
+        display: block;
+        border: solid #757575;
+        border-width: 0 0 3px 3px;
+        outline: none;
+        &.next{
+            left: 20px;
+            transform: rotate(45deg);
+        }
+        &.prev{
+            right: 20px;
+            transform: rotate(-135deg);
+        }
+        &.swiper-button-disabled{
+            opacity: .35;
+            cursor: auto;
+            pointer-events: none;
+        }
+    }
+    .btn-close{
+        position: absolute;
+        right: 20px;
+        top: 20px;;
+        width: 50px;
+        height: 50px;
+        background-image: url(../img/img_close.png);
+        background-size: 50px 50px;
+        opacity: 0.8;
+        outline: none;
+    }
+}
+
+/* notice-update-wrap */
+.notice-update-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background-color: #1f2029;
+  text-align: center;
+  color: $primary-color-white;
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .notice-update {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  p{
+    font-size: 16px;
+  }
+  .update-link {
+    display: inline-block;
+    width: 320px;
+    height: 40px;
+    margin-top: 30px;
+    background-color: $primary-color-grey;
+    line-height: 40px;
+  }
+}
+
 @-webkit-keyframes hvr-ripple-out {
   100% {
     top: -12px;
@@ -571,7 +733,10 @@ footer{
     }
 }
 
-canvas{
-    width: 200px;
-    height: 200px;
+/* IE 핵 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .spot .bg-box .bg-text{
+        background: none;
+        opacity: 0.2;
+    }
 }
