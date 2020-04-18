@@ -124,6 +124,38 @@ $(function () {
         }
     });
 
+    // work modal
+    var getUrl = location.href, getLastUrl = getUrl.slice(getUrl.lastIndexOf('/') + 1, getUrl.length);
+    var projectSwiper = new Swiper('.project-swiper', {
+        autoHeight: true,
+        slidesPerView: 1,
+        simulateTouch: false,
+        autoHeight: true,
+        speed: 400,
+        navigation: {
+            nextEl: '.btn-arrow.prev',
+            prevEl: '.btn-arrow.next'
+        },
+    });
+    projectSwiper.on('slideChange', function () {
+        $('html, body').animate({scrollTop:0},300);
+    });
+    $('.btn-arrow').click(function () {
+    $('html, body').animate({scrollTop:0},300);
+    projectSwiper.updateAutoHeight(0);
+    });
+
+    $('.work-link').click(function () {
+        var num = $(this).parent().index();
+        projectSwiper.slideTo(num, 0);
+        $('.modal-project').addClass('active');
+        $('.wrap').addClass('scroll-hide');
+    });
+    $('.btn-close').click(function () {
+        $('.modal-project').removeClass('active');
+        $('.wrap').removeClass('scroll-hide');
+    });
+
     // contact 인풋
     $('.row input, .row textarea').focus(function() {
         $(this).parent().addClass('active');
