@@ -104,7 +104,6 @@ $(function () {
                 centeredSlides: true,
                 slidesPerView: 1.5,
                 spaceBetween: 5,
-                loop: true,
                 pagination: {
                   el: '.work-pagination',
                   clickable: true,
@@ -115,7 +114,6 @@ $(function () {
                 spaceBetween: 5,
                 slidesOffsetBefore: 0,
                 slidesOffsetAfter: 0,
-                loop: true,
                 pagination: {
                   el: '.work-pagination',
                   clickable: true,
@@ -137,13 +135,13 @@ $(function () {
             prevEl: '.btn-arrow.next'
         },
     });
-    projectSwiper.on('slideChange', function () {
-        $('html, body').animate({scrollTop:0},300);
-    });
-    $('.btn-arrow').click(function () {
-    $('html, body').animate({scrollTop:0},300);
-    projectSwiper.updateAutoHeight(0);
-    });
+    // projectSwiper.on('slideChange', function () {
+    //     $('html, body').animate({scrollTop:0},300);
+    // });
+    // $('.btn-arrow').click(function () {
+    // $('html, body').animate({scrollTop:0},300);
+    // projectSwiper.updateAutoHeight(0);
+    // });
 
     $('.work-link').click(function () {
         var num = $(this).parent().index();
