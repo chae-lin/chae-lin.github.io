@@ -111,6 +111,16 @@
                                     </div>
                                 </a>
                             </li>
+                            <!-- <li class="swiper-slide">
+                                <a href="#" class="work-link">
+                                    <div class="work-img no6"></div>
+                                    <h4 class="work-title">파트너스퀘어 홍대</h4>
+                                    <div class="work-tag">
+                                        <span>#적응형</span>
+                                        <span>#sass</span>
+                                    </div>
+                                </a>
+                            </li> -->
                         </ul>
                         <!-- Pagination -->
                         <div class="work-pagination"></div>
@@ -166,11 +176,11 @@
                         <button type="btn-submit" class="btn-submit" >Send</button>
                     </form>
                 </div>
+                <footer>
+                    <span>Copyrightⓒ2020 / CL.All rights reserved.</span>
+                </footer>
             </section>
         </div>
-        <footer>
-            <span>Copyrightⓒ2020 / CL.All rights reserved.</span>
-        </footer>
     </div>
     <!-- //본문 -->
     <!-- 프로젝트 상세 팝업 -->
@@ -323,7 +333,7 @@
                                     <dt>프로젝트 기간</dt>
                                     <dd>
                                         <ul>
-                                            <li>2019.11.18 ~ 2019.12.10</li>
+                                            <li>2019.02.01 ~ 2019.09.26</li>
                                         </ul>
                                     </dd>
                                 </div>
@@ -533,5 +543,123 @@
         </div>
     </div>
     <![endif]-->
+
+    <script>
+        (function($) { "use strict";
+
+        //Scroll back to top
+        // $(document).ready(function() {
+        //     var offset = 300;
+        //     var duration = 400;
+        //     jQuery(window).on('scroll', function() {
+        //         if (jQuery(this).scrollTop() > offset) {
+        //             jQuery('.scroll-to-top').addClass('active');
+        //         } else {
+        //             jQuery('.scroll-to-top').removeClass('active');
+        //         }
+        //     });
+        //     jQuery('.scroll-to-top').on('click', function(event) {
+        //         event.preventDefault();
+        //         jQuery('html, body').animate({scrollTop: 0}, duration);
+        //         return false;
+        //     })
+        // });
+
+        // $('.hamburger-icon').click(function () {
+        //     $(this).toggleClass('close');
+        // });
+
+
+
+
+        // $('.btn-close').one('click',function () {
+        //     if (getLastUrl.indexOf('project') == 1) {
+        //         var stateObj = {foo : "bar"};
+        //         history.pushState(stateObj, "page 2", "index.html");
+        //     }
+        // });
+        // function removeUrl() {
+        //     var stateObj = {foo : "bar"};
+        //     history.pushState(stateObj, "page 2", "index.html");
+        // }
+        // if (getLastUrl == '#project1') {
+        //     projectSwiper.slideTo(0, 0);
+        //     $('.modal-project').addClass('active');
+        // } else if (getLastUrl == '#project2') {
+        //     projectSwiper.slideTo(1, 0);
+        //     $('.modal-project').addClass('active');
+        // } else if (getLastUrl == '#project3') {
+        //     projectSwiper.slideTo(2, 0);
+        //     $('.modal-project').addClass('active');
+        // } else if (getLastUrl == '#project4') {
+        //     projectSwiper.slideTo(3, 0);
+        //     $('.modal-project').addClass('active');
+        // } else if (getLastUrl == '#project5') {
+        //     projectSwiper.slideTo(4, 0);
+        //     $('.modal-project').addClass('active');
+        // } else if (getLastUrl == '#project6') {
+        //     projectSwiper.slideTo(5, 0);
+        //     $('.modal-project').addClass('active');
+        // }
+
+
+
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+    const section = document.getElementsByTagName('section');
+
+    let index = 0;
+    let animationDuration = 1000;
+    let lastTime = 0;
+
+    function nextEvent(){
+        if (index>2) return;
+        index++;
+        section[index].scrollIntoView({behavior: 'smooth'})
+        toogleText(index, 'show');
+        toogleText(index-1, 'hide');
+        console.log(index)
+        return index;
+    }
+    function prevEvent(){
+        if (index<1) return;
+        index--;
+        section[index].scrollIntoView({behavior: 'smooth'})
+        toogleText(index, 'show');
+        toogleText(index+1, 'hide');
+        return index;
+    }
+
+    const toogleText = (index, state) => {
+        if (state === 'show'){
+            section[index].children[0].classList.add('show')
+        }
+        else{
+            section[index].children[0].classList.remove('show')
+        }
+    }
+    toogleText(0, 'show');
+
+    window.addEventListener('wheel', (e) => {
+        const delta = e.wheelDelta;
+        const currentTime = new Date().getTime()
+
+        if (currentTime - lastTime < animationDuration){
+            e.preventDefault();
+            return;
+        }
+
+        if (delta < 0){
+            console.log(index)
+            nextEvent();
+            console.log(index)
+        }
+        else{
+            prevEvent(index);
+        }
+        lastTime = currentTime;
+    })
+    </script>
 </body>
 </html>
