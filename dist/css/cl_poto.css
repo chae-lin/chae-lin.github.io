@@ -42,6 +42,12 @@
   src: url(../../src/font/roboto/Roboto-Bold.eot?#iefix) format("embedded-opentype"), url(../../src/font/roboto/Roboto-Bold.woff) format("woff"), url(../../src/font/roboto/Roboto-Bold.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: 'Monoton';
+  src: url(../../src/font/Monoton/Monoton-Regular.eot);
+  src: url(../../src/font/Monoton/Monoton-Regular.eot?#iefix) format("embedded-opentype"), url(../../src/font/Monoton/Monoton-Regular.woff) format("woff"), url(../../src/font/Monoton/Monoton-Regular.ttf) format("truetype");
+}
+
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -278,7 +284,7 @@ table caption {
   animation: spinner 2.5s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
   width: 100%;
   height: 100%;
-  background-color: #f2727f;
+  background-color: #dc5361;
 }
 
 .preloader .loader:after {
@@ -314,8 +320,6 @@ header {
 
 /* gnb */
 .gnb {
-  max-width: 1500px;
-  margin: 0 auto;
   padding: 0 20px;
   text-align: right;
 }
@@ -438,15 +442,14 @@ footer {
 }
 
 .spot .sub-title {
-  font-family: robotoMedium;
   font-size: 35px;
   line-height: 1;
-  color: #f2727f;
+  color: #dc5361;
 }
 
 .spot .title {
-  font-family: robotoBold;
-  font-size: 120px;
+  font-family: 'Monoton';
+  font-size: 100px;
   line-height: 1;
   letter-spacing: 3px;
   color: #fff;
@@ -523,8 +526,12 @@ footer {
   position: relative;
   max-width: 700px;
   text-align: right;
-  transition: all .1s ease;
-  -webkit-transition: all .1s ease;
+  transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+}
+
+.work .swiper-slide:hover .work-link:before {
+  background-color: rgba(31, 32, 41, 0);
 }
 
 .work .work-link {
@@ -542,14 +549,6 @@ footer {
   background-color: rgba(31, 32, 41, 0.2);
 }
 
-.work .work-link:hover:before {
-  background-color: rgba(31, 32, 41, 0);
-}
-
-.work .work-link:hover .work-img {
-  border-width: 0;
-}
-
 .work .work-img {
   height: 16.5vw;
   max-height: 440px;
@@ -557,7 +556,7 @@ footer {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 6px solid #fff;
+  border: 2px solid #fff;
   -webkit-transition: all .3s;
   transition: all .3s;
 }
@@ -588,12 +587,20 @@ footer {
   background-image: url(../img/work6.jpg);
 }
 
+.work .work-img.no7 {
+  background-image: url(../img/work7.jpg);
+}
+
+.work .work-img.no8 {
+  background-image: url(../img/work8.jpg);
+}
+
 .work .work-title {
   padding: 10px 10px 0;
   font-family: robotoBold, NanumSquareBold;
   font-size: 20px;
   line-height: 30px;
-  color: #f2727f;
+  color: #dc5361;
 }
 
 .work .work-tag {
@@ -748,7 +755,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f2727f;
+  background-color: #dc5361;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;
@@ -779,7 +786,7 @@ footer {
 }
 
 .contact .btn-submit.a-submit:after {
-  border-color: #f2727f;
+  border-color: #dc5361;
   -webkit-animation-name: hvr-ripple-out;
   animation-name: hvr-ripple-out;
 }
@@ -841,22 +848,30 @@ footer {
 }
 
 .modal-project .swiper-slide:nth-child(1) .project-top {
-  background-image: url(../img/bg_project_top1.png);
+  background-image: url(../img/bg_project_top7.png);
 }
 
 .modal-project .swiper-slide:nth-child(2) .project-top {
-  background-image: url(../img/bg_project_top2.jpg);
+  background-image: url(../img/bg_project_top6.png);
 }
 
 .modal-project .swiper-slide:nth-child(3) .project-top {
-  background-image: url(../img/bg_project_top3.jpg);
+  background-image: url(../img/bg_project_top1.png);
 }
 
 .modal-project .swiper-slide:nth-child(4) .project-top {
-  background-image: url(../img/bg_project_top4.png);
+  background-image: url(../img/bg_project_top2.jpg);
 }
 
 .modal-project .swiper-slide:nth-child(5) .project-top {
+  background-image: url(../img/bg_project_top3.jpg);
+}
+
+.modal-project .swiper-slide:nth-child(6) .project-top {
+  background-image: url(../img/bg_project_top4.png);
+}
+
+.modal-project .swiper-slide:nth-child(7) .project-top {
   background-image: url(../img/bg_project_top5.jpg);
 }
 
@@ -1165,7 +1180,8 @@ footer {
     font-size: 12vw;
   }
   .spot .sub-title {
-    font-size: 5vw;
+    font-size: 6vw;
+    line-height: 1.5;
   }
   .work {
     min-height: 320px;
@@ -1181,7 +1197,7 @@ footer {
     background-color: rgba(31, 32, 41, 0);
   }
   .work .swiper-slide.swiper-slide-active a:hover .work-img {
-    border-width: 5px;
+    border-width: 4px;
   }
   .work .work-img {
     border-width: 5px;

@@ -59,8 +59,6 @@ header{
 
 /* gnb */
 .gnb{
-    max-width: 1500px;
-    margin: 0 auto;
     padding: 0 20px;
     text-align: right;
     ul{
@@ -170,14 +168,13 @@ footer{
         padding: 0 20px;
     }
     .sub-title{
-        font-family: robotoMedium;
         font-size: 35px;
         line-height: 1;
         color: $primary-color-red;
     }
     .title{
-        font-family: robotoBold;
-        font-size: 120px;
+        font-family: 'Monoton';
+        font-size: 100px;
         line-height: 1;
         letter-spacing: 3px;
         color: $primary-color-white;
@@ -247,8 +244,13 @@ footer{
         position: relative;
         max-width: 700px;
         text-align: right;
-        transition: all .1s ease;
-        -webkit-transition: all .1s ease;
+        transition: all .2s ease;
+        -webkit-transition: all .2s ease;
+        &:hover {
+            .work-link:before{
+                background-color: rgba(31, 32, 41, 0);
+            }
+        }
     }
     .work-link{
         display: block;
@@ -262,14 +264,6 @@ footer{
             bottom: 0;
             background-color: rgba(31, 32, 41, 0.2);
         }
-        &:hover{
-            &:before{
-                background-color: rgba(31, 32, 41, 0);
-            }
-            .work-img{
-                border-width: 0;
-            }
-        }
     }
     .work-img{
         height: 16.5vw;
@@ -278,7 +272,7 @@ footer{
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
-        border: 6px solid #fff;
+        border: 2px solid #fff;
         -webkit-transition: all .3s;
         transition: all .3s;
         &.no1{
@@ -300,6 +294,12 @@ footer{
         }
         &.no6{
             background-image: url(../img/work6.jpg);
+        }
+        &.no7{
+            background-image: url(../img/work7.jpg);
+        }
+        &.no8{
+            background-image: url(../img/work8.jpg);
         }
     }
     .work-title{
@@ -529,18 +529,24 @@ footer{
     }
     .swiper-slide{
         &:nth-child(1) .project-top{
-            background-image: url(../img/bg_project_top1.png);
+            background-image: url(../img/bg_project_top7.png);
         }
         &:nth-child(2) .project-top{
-            background-image: url(../img/bg_project_top2.jpg);
+            background-image: url(../img/bg_project_top6.png);
         }
         &:nth-child(3) .project-top{
-            background-image: url(../img/bg_project_top3.jpg);
+            background-image: url(../img/bg_project_top1.png);
         }
         &:nth-child(4) .project-top{
-            background-image: url(../img/bg_project_top4.png);
+            background-image: url(../img/bg_project_top2.jpg);
         }
         &:nth-child(5) .project-top{
+            background-image: url(../img/bg_project_top3.jpg);
+        }
+        &:nth-child(6) .project-top{
+            background-image: url(../img/bg_project_top4.png);
+        }
+        &:nth-child(7) .project-top{
             background-image: url(../img/bg_project_top5.jpg);
         }
     }
@@ -807,7 +813,8 @@ footer{
             font-size: 12vw;
         }
         .sub-title{
-            font-size: 5vw;
+            font-size: 6vw;
+            line-height: 1.5;
         }
     }
 
@@ -826,7 +833,7 @@ footer{
                     background-color: rgba(31,32,41,0);
                 }
                 &:hover .work-img{
-                    border-width: 5px;
+                    border-width: 4px;
                 }
             }
         }

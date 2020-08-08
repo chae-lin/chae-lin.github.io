@@ -52,3 +52,11 @@
        url(../../src/font/roboto/Roboto-Bold.woff) format('woff'),
        url(../../src/font/roboto/Roboto-Bold.ttf) format('truetype');
 }
+
+@font-face {
+      font-family: 'Monoton';
+      src: url(../../src/font/Monoton/Monoton-Regular.eot);
+      src: url(../../src/font/Monoton/Monoton-Regular.eot?#iefix) format('embedded-opentype'),
+            url(../../src/font/Monoton/Monoton-Regular.woff) format('woff'),
+            url(../../src/font/Monoton/Monoton-Regular.ttf) format('truetype');
+}
