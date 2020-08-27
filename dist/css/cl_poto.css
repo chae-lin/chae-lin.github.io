@@ -562,7 +562,7 @@ footer {
 }
 
 .work .work-img.no1 {
-  background-image: url(../img/work1.jpg);
+  background-image: url(../img/work1.png);
 }
 
 .work .work-img.no2 {
@@ -856,6 +856,7 @@ footer {
 }
 
 .modal-project .swiper-slide:nth-child(3) .project-top {
+  background-color: rgba(140, 216, 124, 0.3);
   background-image: url(../img/bg_project_top1.png);
 }
 
