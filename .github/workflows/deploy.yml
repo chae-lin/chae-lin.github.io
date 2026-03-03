@@ -25,16 +25,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
 
-      - name: Enable Corepack (pnpm)
-        run: corepack enable
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install
-        run: pnpm install --frozen-lockfile
-
-      - name: Generate
-        run: pnpm run generate
+      - name: Generate static site
+        run: npx nuxi generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
