@@ -1,0 +1,58 @@
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 기본 margin 제거 */
+* {
+  margin: 0;
+}
+
+/* html / body 기본 */
+html,
+body {
+  height: 100%;
+}
+
+/* body 기본 세팅 */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 미디어 요소 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* form 요소 폰트 상속 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 줄바꿈 안정화 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 루트 stacking context */
+#root,
+#__nuxt {
+  isolation: isolate;
+}

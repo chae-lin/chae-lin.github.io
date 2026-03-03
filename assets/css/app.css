@@ -1,0 +1,8 @@
+* {
+  font-family: "Jua", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+.section {
+  @apply mx-auto max-w-6xl scroll-mt-[20px] md:scroll-mt-[30px] px-6 py-10;
+}
