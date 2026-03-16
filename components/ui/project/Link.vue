@@ -26,7 +26,7 @@ const isHttpUrl = (value: unknown): value is string => {
 
 <style scoped>
 .project-card__link {
-  @apply text-base font-medium text-[#f08b89];
+  @apply mt-1 text-base font-medium text-[#f08b89];
 }
 
 a.project-card__link {

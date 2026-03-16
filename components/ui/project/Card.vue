@@ -67,16 +67,6 @@ defineProps<{
             </template>
           </dl>
 
-          <ul class="project-card__stack">
-            <li
-              v-for="tech in project.stack"
-              :key="tech"
-              class="project-card__tag"
-            >
-              {{ tech }}
-            </li>
-          </ul>
-
           <UiProjectLink :url="project.link" />
         </div>
       </div>

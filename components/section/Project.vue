@@ -32,7 +32,7 @@ onMounted(async () => {
   tl.fromTo(
     titleEl,
     { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+    { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
   ).fromTo(
     cards,
     { opacity: 0, y: 30, scale: 0.96 },
@@ -44,7 +44,7 @@ onMounted(async () => {
       ease: "power3.out",
       stagger: 0.1,
     },
-    "-=0.1"
+    "-=0.1",
   );
 });
 
