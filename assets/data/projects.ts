@@ -43,26 +43,8 @@ export const projects: ProjectItem[] = [
     link: "Internal Platform (Non-public)",
   },
   {
-    title: "LORDNINE Asia Official Website",
-    description: "로드나인 아시아 공식 홈페이지 구축 및 라이브 서비스 운영",
-    thumbnail: "/images/projects/l9.jpg",
-    stack: ["Nuxt 3", "Vue 3", "TypeScript", "Pinia", "SCSS", "i18n"],
-    detail: {
-      role: "Frontend Developer",
-      highlights: [
-        "Nuxt 기반 게임 공식 홈페이지 프로젝트 초기 환경 구성",
-        "SCSS(BEM) 기반 스타일 아키텍처 설계",
-        "i18n 기반 글로벌 다국어 지원 구조 구현",
-        "Stove 플랫폼 계정 연동 기능 적용",
-        "라이브 서비스 운영 및 프로모션 페이지 유지보수",
-      ],
-      duration: "2025.06",
-    },
-    link: "https://l9asia.onstove.com/en",
-  },
-  {
     title: "LORDNINE Official Website",
-    description: "로드나인 글로벌 홈페이지 구축 및 라이브 서비스 운영",
+    description: "로드나인 홈페이지 구축 및 라이브 서비스 운영",
     thumbnail: "/images/projects/l9-asia.jpg",
     stack: ["Nuxt 3", "Vue 3", "TypeScript", "Pinia", "SCSS", "i18n"],
     detail: {
@@ -70,11 +52,11 @@ export const projects: ProjectItem[] = [
       highlights: [
         "공식 홈페이지 전체 페이지(13개) UI 마크업 전담",
         "프로모션 이벤트 페이지 UI 구현",
-        "SCSS(BEM) 기반 스타일 구조 설계",
+        "SCSS(BEM) 기반 스타일 아키텍처 설계",
         "애니메이션 및 인터랙션 UI 구현",
         "라이브 서비스 운영 및 이벤트 페이지 제작",
       ],
-      duration: "2024.03 ~ 2025.05",
+      duration: "2024.03 ~ 2025.06",
     },
     link: "https://l9.onstove.com/ko",
   },
