@@ -76,10 +76,9 @@ export const projects: ProjectItem[] = [
     detail: {
       role: "Frontend Developer",
       highlights: [
-        "메인 페이지 UI 리뉴얼",
-        "프로모션 페이지 프론트엔드 개발 및 UI 구현",
+        "메인 페이지 UI 리뉴얼 및  프론트엔드 개발",
+        "프로모션 페이지 UI 마크업 및 프론트엔드 개발",
         "반응형 레이아웃 및 인터랙션 UI 구현",
-        "Nuxt 기반 페이지 구조 구성",
       ],
       duration: "2023.10 ~ 2024.02",
     },
