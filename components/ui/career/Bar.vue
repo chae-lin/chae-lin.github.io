@@ -29,7 +29,7 @@ const getCareerPercentage = (index: number): number => {
 
   // 1. 모든 경력의 개월 수 합계 (공백 제외)
   const allDurations = props.careers.map((item) =>
-    getTotalMonths(item.start, item.end)
+    getTotalMonths(item.start, item.end),
   );
   const totalSum = allDurations.reduce((acc, cur) => acc + cur, 0);
 
@@ -79,11 +79,11 @@ const setActive = (i: number) => emit("update:activeIndex", i);
 }
 
 .bar-btn {
-  @apply relative flex flex-col h-full p-2 grayscale transition;
+  @apply relative flex flex-col justify-center py-3 px-2 grayscale transition;
 }
 
 .bar-label {
-  @apply truncate text-base font-medium text-gray-700 opacity-60 transition;
+  @apply text-base font-medium text-gray-700 opacity-60 transition;
 }
 
 .bar-btn.active,

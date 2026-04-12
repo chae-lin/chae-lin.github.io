@@ -77,6 +77,7 @@ defineProps<{
 <style scoped>
 .project-card {
   perspective: 1000px;
+  min-height: 52vh;
 }
 
 .project-card:hover .project-card__inner {
