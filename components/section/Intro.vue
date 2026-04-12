@@ -21,7 +21,7 @@ onMounted(() => {
     ],
     {
       opacity: 0,
-    }
+    },
   );
 
   const tl = gsap.timeline({ defaults: { ease: "back.out(1.7)" } });
@@ -36,7 +36,7 @@ onMounted(() => {
       titleSub.value,
       { y: -40 },
       { y: 0, duration: 0.7, ease: "back.out(2)" },
-      "<" // 동시에
+      "<", // 동시에
     )
     .fromTo(
       titleMain.value,
@@ -48,7 +48,7 @@ onMounted(() => {
         duration: 0.8,
         ease: "elastic.out(1, 0.6)",
       },
-      "-=0.3"
+      "-=0.3",
     )
     .fromTo(
       quotes01.value,
@@ -61,7 +61,7 @@ onMounted(() => {
         duration: 0.6,
         ease: "back.out(2)",
       },
-      "-=0.5"
+      "-=0.5",
     )
     .fromTo(
       quotes02.value,
@@ -74,13 +74,13 @@ onMounted(() => {
         duration: 0.6,
         ease: "back.out(2)",
       },
-      "<" // quotes-01과 동시에
+      "<", // quotes-01과 동시에
     )
     .fromTo(
       objectLine.value,
       { opacity: 0, scale: 0, rotation: -20 },
       { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(3)" },
-      "-=0.1"
+      "-=0.1",
     )
     .to(objectLine.value, {
       rotation: 10,
@@ -151,7 +151,7 @@ h3 {
   @apply pt-[16vw] bg-[url(/images/intro/title-sub.webp)] bg-no-repeat bg-contain bg-center;
 }
 i {
-  @apply absolute left-[50%] bg-[url(/images/object.webp)] bg-no-repeat bg-[45vw_auto];
+  @apply absolute left-[50%] bg-[url(/images/intro/object.webp)] bg-no-repeat bg-[45vw_auto];
 }
 .quotes-01 {
   @apply top-[0] w-[9vw] h-[9vw] mt-[-2vw] ml-[-38vw] bg-[-26vw_0];

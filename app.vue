@@ -1,23 +1,26 @@
 <script setup>
 useHead({
   meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
-  link: [{ rel: "icon", href: "/favicon.png" }],
+  link: [{ rel: "icon", href: "/images/favicon.png" }],
   htmlAttrs: {
-    lang: "en",
+    lang: "ko",
   },
 });
 
-const title = "Nuxt Starter Template";
+const title = "김채린 | UI·UX 퍼블리셔 & 프론트엔드 개발자";
 const description =
-  "A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.";
+  "웹 표준과 접근성을 기반으로 확장 가능한 구조를 설계하는 8년차 UI·UX 퍼블리셔/프론트엔드 개발자입니다.";
+const ogImage = "/images/og-image.jpg";
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
+  ogImage,
+  ogUrl: "https://chae-lin.github.io",
+  ogType: "website",
+  twitterImage: ogImage,
   twitterCard: "summary_large_image",
 });
 </script>
