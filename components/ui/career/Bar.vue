@@ -79,7 +79,7 @@ const setActive = (i: number) => emit("update:activeIndex", i);
 }
 
 .bar-btn {
-  @apply relative flex flex-col justify-center py-3 px-2 grayscale transition;
+  @apply relative flex flex-col justify-center items-center py-3 px-2 grayscale transition;
 }
 
 .bar-label {
