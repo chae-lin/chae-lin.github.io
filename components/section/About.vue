@@ -6,63 +6,30 @@ import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
+const { prefersReducedMotion, createScrollTimeline } = useMotion();
 
 onMounted(async () => {
   gsap.registerPlugin(ScrollTrigger);
   await nextTick();
 
   const sectionEl = sectionRef.value;
-  if (!sectionEl) return;
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
+  if (!sectionEl || prefersReducedMotion) return;
 
   const titleEl = titleRef.value?.$el ?? titleRef.value;
   const bio = sectionEl.querySelector(".about-bio");
-  const statCards = gsap.utils.toArray(
-    sectionEl.querySelectorAll(".stat-card"),
-  );
-  const chips = gsap.utils.toArray(
-    sectionEl.querySelectorAll(".strength-chip"),
-  );
+  const statCards = gsap.utils.toArray(sectionEl.querySelectorAll(".stat-card"));
+  const chips = gsap.utils.toArray(sectionEl.querySelectorAll(".strength-chip"));
 
   gsap.set([titleEl, bio], { opacity: 0, y: 24 });
   gsap.set(statCards, { opacity: 0, y: 20, scale: 0.96 });
   gsap.set(chips, { opacity: 0, y: 12 });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionEl,
-      start: "top 75%",
-      once: true,
-    },
-  });
+  const tl = createScrollTimeline(sectionEl);
 
   tl.to(titleEl, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" })
     .to(bio, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.3")
-    .to(
-      statCards,
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.45,
-        ease: "back.out(1.4)",
-        stagger: 0.1,
-      },
-      "-=0.2",
-    )
-    .to(
-      chips,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        ease: "power2.out",
-        stagger: 0.05,
-      },
-      "-=0.2",
-    );
+    .to(statCards, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.4)", stagger: 0.1 }, "-=0.2")
+    .to(chips, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.05 }, "-=0.2");
 });
 
 onUnmounted(() => {

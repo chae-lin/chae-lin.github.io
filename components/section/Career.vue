@@ -6,16 +6,14 @@ import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
+const { prefersReducedMotion, createScrollTimeline } = useMotion();
 
 const activeIndex = ref(careers.length - 1);
 
 watch(activeIndex, async () => {
   await nextTick();
   const sectionEl = sectionRef.value;
-  if (!sectionEl) return;
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
+  if (!sectionEl || prefersReducedMotion) return;
 
   const panelEl = sectionEl.querySelector(".career-panel");
   if (!panelEl) return;
@@ -32,10 +30,7 @@ onMounted(async () => {
   await nextTick();
 
   const sectionEl = sectionRef.value;
-  if (!sectionEl) return;
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
+  if (!sectionEl || prefersReducedMotion) return;
 
   const titleEl = titleRef.value?.$el ?? titleRef.value;
 

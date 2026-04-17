@@ -6,16 +6,14 @@ import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
+const { prefersReducedMotion, createScrollTimeline } = useMotion();
 
 onMounted(async () => {
   gsap.registerPlugin(ScrollTrigger);
   await nextTick();
 
   const sectionEl = sectionRef.value;
-  if (!sectionEl) return;
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
+  if (!sectionEl || prefersReducedMotion) return;
 
   const titleEl = titleRef.value?.$el ?? titleRef.value;
   const groups = gsap.utils.toArray(sectionEl.querySelectorAll(".skill-group"));
@@ -23,19 +21,10 @@ onMounted(async () => {
   gsap.set(titleEl, { opacity: 0, y: 24 });
   gsap.set(groups, { opacity: 0, y: 20 });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionEl,
-      start: "top 75%",
-      once: true,
-    },
-  });
+  const tl = createScrollTimeline(sectionEl);
 
-  tl.to(titleEl, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }).to(
-    groups,
-    { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 },
-    "-=0.3"
-  );
+  tl.to(titleEl, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" })
+    .to(groups, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, "-=0.3");
 });
 
 onUnmounted(() => {

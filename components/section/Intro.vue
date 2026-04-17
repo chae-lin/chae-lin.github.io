@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const titleMain = ref(null);
 const titleSub = ref(null);
@@ -8,11 +7,9 @@ const quotes01 = ref(null);
 const quotes02 = ref(null);
 const objectLine = ref(null);
 
+const { prefersReducedMotion } = useMotion();
+
 onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   if (prefersReducedMotion) {
     gsap.set([titleSub.value, titleMain.value, quotes01.value, quotes02.value, objectLine.value], { opacity: 1 });
     return;
