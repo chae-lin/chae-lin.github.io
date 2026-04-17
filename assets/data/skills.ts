@@ -13,7 +13,7 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Framework & Library",
     accent: "#f08b89",
-    skills: ["Vue 3", "Nuxt 4", "Pinia", "GSAP", "jQuery"],
+    skills: ["Vue 3", "Nuxt 4", "Pinia", "VueUse", "GSAP", "jQuery"],
   },
   {
     category: "Styling",
@@ -23,7 +23,7 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Dev Tools",
     accent: "#c4a8d4",
-    skills: ["Storybook", "Gulp", "Vite", "Git", "i18n"],
+    skills: ["Storybook", "ESLint", "Prettier", "Gulp", "Vite", "Git", "i18n"],
   },
   {
     category: "Design Tools",

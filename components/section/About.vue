@@ -1,27 +1,11 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { stats, strengths } from "~/assets/data/about";
 import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
 
 const sectionRef = ref<HTMLElement | null>(null);
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
-
-const stats = [
-  { value: "8+", label: "Years of\nExperience" },
-  { value: "3", label: "Companies\nWorked" },
-  { value: "9+", label: "Major\nProjects" },
-];
-
-const strengths = [
-  "웹 표준 · 접근성",
-  "시맨틱 마크업",
-  "인터랙션 · 애니메이션",
-  "컴포넌트 설계",
-  "글로벌 다국어 UI",
-  "성능 최적화",
-  "반응형 웹",
-  "SSR / CSR 전략",
-];
 
 onMounted(async () => {
   gsap.registerPlugin(ScrollTrigger);
