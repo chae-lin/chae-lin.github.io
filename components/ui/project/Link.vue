@@ -5,11 +5,11 @@ defineProps<{
 
 const isHttpUrl = (value: unknown): value is string => {
   if (typeof value !== "string") return false;
-  const s = value.trim();
-  if (!/^https?:\/\//i.test(s)) return false;
+  const trimmed = value.trim();
+  if (!/^https?:\/\//i.test(trimmed)) return false;
 
   try {
-    const url = new URL(s);
+    const url = new URL(trimmed);
     return url.protocol === "http:" || url.protocol === "https:";
   } catch {
     return false;
@@ -18,30 +18,14 @@ const isHttpUrl = (value: unknown): value is string => {
 </script>
 
 <template>
-  <NuxtLink v-if="isHttpUrl(url)" :to="url" class="project-card__link">
-    View Project<i>→</i>
+  <NuxtLink
+    v-if="isHttpUrl(url)"
+    :to="url"
+    class="group mt-1 text-base font-medium text-[#f08b89] transition hover:opacity-70"
+  >
+    View Project<i class="transition group-hover:translate-x-[4px] inline-block">→</i>
   </NuxtLink>
-  <span v-else class="project-card__link">{{ url }}</span>
+  <span v-else class="mt-1 text-base font-medium text-[#f08b89] opacity-40">
+    {{ url }}
+  </span>
 </template>
-
-<style scoped>
-.project-card__link {
-  @apply mt-1 text-base font-medium text-[#f08b89];
-}
-
-a.project-card__link {
-  @apply transition hover:opacity-70;
-}
-
-span.project-card__link {
-  @apply opacity-[0.4];
-}
-
-.project-card__link i {
-  @apply transition;
-}
-
-.project-card__link:hover i {
-  @apply inline-block translate-x-[4px];
-}
-</style>

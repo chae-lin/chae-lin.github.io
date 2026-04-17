@@ -37,60 +37,38 @@ const getCareerPercentage = (index: number): number => {
 
   // 2. 해당 인덱스의 비중 계산
   const targetDuration = allDurations[index] ?? 0;
-  const percentage = (targetDuration / totalSum) * 100;
-
-  // 소수점 첫째 자리까지 반환
-  return Math.round(percentage * 10) / 10;
+  return Math.round((targetDuration / totalSum) * 1000) / 10;
 };
 
+// 소수점 첫째 자리까지 반환
 const getSegmentStyle = (index: number) => {
   const opacity = Math.min(0.3 + index * 0.15, 1);
-
   return {
     width: `${getCareerPercentage(index)}%`,
     backgroundColor: `rgba(${BASE_COLOR}, ${opacity})`,
   };
 };
 
-const setActive = (i: number) => emit("update:activeIndex", i);
+const setActive = (index: number) => emit("update:activeIndex", index);
 </script>
 
 <template>
-  <div class="bar-wrap">
+  <div class="overflow-hidden flex mb-4 rounded-2xl">
     <button
       v-for="(item, index) in careers"
       :key="item.company + index"
-      class="bar-btn"
-      :class="{ active: index === activeIndex }"
       type="button"
+      class="group relative flex flex-col justify-center items-center py-3 px-2 grayscale transition hover:grayscale-0"
+      :class="{ 'grayscale-0': index === activeIndex }"
       :style="getSegmentStyle(index)"
       @click="setActive(index)"
     >
-      <span class="bar-label">
+      <span
+        class="text-base font-medium text-gray-700 opacity-60 transition group-hover:opacity-100"
+        :class="{ 'opacity-100': index === activeIndex }"
+      >
         {{ item.company }}
       </span>
     </button>
   </div>
 </template>
-
-<style scoped>
-.bar-wrap {
-  @apply overflow-hidden flex mb-4 rounded-2xl;
-}
-
-.bar-btn {
-  @apply relative flex flex-col justify-center items-center py-3 px-2 grayscale transition;
-}
-
-.bar-label {
-  @apply text-base font-medium text-gray-700 opacity-60 transition;
-}
-
-.bar-btn.active,
-.bar-btn:hover {
-  @apply grayscale-0;
-}
-.bar-btn.active .bar-label {
-  @apply opacity-100;
-}
-</style>

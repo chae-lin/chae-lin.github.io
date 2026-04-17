@@ -1,21 +1,20 @@
-<script setup>
+<script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "~/assets/data/projects";
 
-const sectionRef = ref(null);
-const titleRef = ref(null);
+const sectionRef = ref<HTMLElement | null>(null);
+const titleRef = ref<any>(null);
 
 onMounted(async () => {
   gsap.registerPlugin(ScrollTrigger);
-
-  await nextTick(); // v-for 렌더 완료 보장
+  await nextTick();
 
   const sectionEl = sectionRef.value;
   const titleEl = titleRef.value?.$el ?? titleRef.value;
-
-  // 섹션 내부의 카드 DOM을 수집
-  const cards = gsap.utils.toArray(sectionEl.querySelectorAll(".project-card"));
+  const cards = gsap.utils.toArray(
+    sectionEl!.querySelectorAll(".project-card"),
+  );
 
   gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 });
   gsap.set(titleEl, { opacity: 0, y: 30 });
@@ -24,8 +23,7 @@ onMounted(async () => {
     scrollTrigger: {
       trigger: sectionEl,
       start: "top 75%",
-      once: true, // 한 번만 재생
-      // markers: true,
+      once: true,
     },
   });
 
@@ -56,7 +54,7 @@ onUnmounted(() => {
 <template>
   <section ref="sectionRef" class="section">
     <UiSectionTitle ref="titleRef" title="Major Projects" />
-    <div class="project-list">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
       <UiProjectCard
         v-for="project in projects"
         :key="project.title"
@@ -65,9 +63,3 @@ onUnmounted(() => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.project-list {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[12px];
-}
-</style>

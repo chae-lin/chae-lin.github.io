@@ -19,7 +19,7 @@ watch(activeIndex, async () => {
   gsap.fromTo(
     panelEl,
     { opacity: 0.6, y: 8 },
-    { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }
+    { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
   );
 });
 
@@ -39,11 +39,11 @@ onMounted(async () => {
   const panelCard =
     panelEl?.querySelector(".career-card") ||
     panelEl?.querySelector(".panel") ||
-    panelEl; // fallback
+    panelEl;
 
   const panelLines = panelEl
     ? gsap.utils.toArray(
-        panelEl.querySelectorAll("li, dt, dd, .tag, .chip, .badge")
+        panelEl.querySelectorAll("li, dt, dd, .tag, .chip, .badge"),
       )
     : [];
 
@@ -57,35 +57,34 @@ onMounted(async () => {
     scrollTrigger: {
       trigger: sectionEl,
       start: "top 75%",
-      once: true, // 한 번만 재생
-      // markers: true,
+      once: true,
     },
   });
 
   tl.fromTo(
     titleEl,
     { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+    { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
   );
   if (barEl) {
     tl.to(
       barEl,
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
-      "-=0.25"
+      "-=0.25",
     );
   }
   if (panelCard) {
     tl.to(
       panelCard,
       { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" },
-      "-=0.2"
+      "-=0.2",
     );
   }
   if (panelLines.length) {
     tl.to(
       panelLines,
       { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", stagger: 0.03 },
-      "<"
+      "<",
     );
   }
 });

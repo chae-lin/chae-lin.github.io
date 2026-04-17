@@ -35,7 +35,7 @@ useSeoMeta({
 
 <style scoped>
 .app {
-  @apply flex flex-col min-h-[100vh] bg-[url(/images/intro/bg.jpeg)] bg-repeat;
+  @apply flex flex-col min-w-[320px] min-h-[100vh] bg-[url(/images/intro/bg.jpeg)] bg-repeat;
 }
 main {
   @apply flex-1;

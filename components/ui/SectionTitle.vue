@@ -3,7 +3,7 @@ defineProps({
   title: String,
 });
 
-const rootEl = ref(null);
+const rootEl = ref<HTMLElement | null>(null);
 defineExpose({ $el: rootEl });
 </script>
 
