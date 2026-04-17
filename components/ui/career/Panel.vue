@@ -52,6 +52,7 @@ const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
           'flex flex-col col-start-1 row-start-1 transition-opacity',
           props.activeIndex === index ? 'opacity-100' : 'opacity-0',
         ]"
+        :aria-hidden="props.activeIndex !== index ? 'true' : undefined"
       >
         <h4 class="text-lg font-semibold">
           {{ career.company }}

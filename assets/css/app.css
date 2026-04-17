@@ -3,6 +3,31 @@
     "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
+/* 키보드 포커스 링 */
+:focus-visible {
+  outline: 3px solid #f08b89;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 스킵 내비게이션 */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: #f08b89;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s;
+}
+.skip-nav:focus {
+  top: 0;
+}
+
 .section {
   @apply mx-auto max-w-6xl scroll-mt-[20px] md:scroll-mt-[30px] px-6 py-10;
 }

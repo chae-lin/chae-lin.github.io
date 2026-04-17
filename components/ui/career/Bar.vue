@@ -58,6 +58,7 @@ const setActive = (index: number) => emit("update:activeIndex", index);
       v-for="(item, index) in careers"
       :key="item.company + index"
       type="button"
+      :aria-pressed="index === activeIndex"
       class="group relative flex flex-col justify-center items-center py-3 px-2 grayscale transition hover:grayscale-0"
       :class="{ 'grayscale-0': index === activeIndex }"
       :style="getSegmentStyle(index)"

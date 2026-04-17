@@ -14,6 +14,9 @@ onMounted(async () => {
   const sectionEl = sectionRef.value;
   if (!sectionEl) return;
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
   const titleEl = titleRef.value?.$el ?? titleRef.value;
   const groups = gsap.utils.toArray(sectionEl.querySelectorAll(".skill-group"));
 

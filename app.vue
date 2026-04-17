@@ -27,6 +27,7 @@ useSeoMeta({
 
 <template>
   <div class="app">
+    <a href="#main-content" class="skip-nav">본문 바로가기</a>
     <LayoutHeader />
     <NuxtPage />
     <LayoutFooter />

@@ -14,6 +14,9 @@ onMounted(async () => {
   const sectionEl = sectionRef.value;
   if (!sectionEl) return;
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
   const titleEl = titleRef.value?.$el ?? titleRef.value;
   const bio = sectionEl.querySelector(".about-bio");
   const statCards = gsap.utils.toArray(

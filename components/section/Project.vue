@@ -12,9 +12,14 @@ onMounted(async () => {
   await nextTick();
 
   const sectionEl = sectionRef.value;
+  if (!sectionEl) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
   const titleEl = titleRef.value?.$el ?? titleRef.value;
   const cards = gsap.utils.toArray(
-    sectionEl!.querySelectorAll(".project-card"),
+    sectionEl.querySelectorAll(".project-card"),
   );
 
   gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 });

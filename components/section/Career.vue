@@ -14,6 +14,9 @@ watch(activeIndex, async () => {
   const sectionEl = sectionRef.value;
   if (!sectionEl) return;
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
   const panelEl = sectionEl.querySelector(".career-panel");
   if (!panelEl) return;
 
@@ -30,6 +33,9 @@ onMounted(async () => {
 
   const sectionEl = sectionRef.value;
   if (!sectionEl) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
 
   const titleEl = titleRef.value?.$el ?? titleRef.value;
 
@@ -107,6 +113,8 @@ onUnmounted(() => {
       class="career-panel"
       :activeIndex="activeIndex"
       :careers="careers"
+      aria-live="polite"
+      aria-atomic="true"
     />
   </section>
 </template>

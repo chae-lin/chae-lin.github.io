@@ -30,7 +30,7 @@ onUnmounted(() => {
     :class="{ 'is-scrolled': isScrolled }"
   >
     <h1 class="sr-only">chaelin portfolio</h1>
-    <nav>
+    <nav aria-label="주 내비게이션">
       <ul class="flex items-center h-[40px] gap-[20px] px-[20px] text-[16px] text-[#7a7a7a] md:h-[60px] md:px-[40px] md:text-[20px]">
         <li
           v-for="item in navItems"
@@ -38,7 +38,11 @@ onUnmounted(() => {
           class="relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:rounded-2xl after:h-[2px] md:after:h-[4px]"
           :class="{ 'text-[#f08b89] after:bg-[#f08b89]': activeSection === item.id }"
         >
-          <button type="button" @click="scrollToSection(item.id)">
+          <button
+            type="button"
+            :aria-current="activeSection === item.id ? 'true' : undefined"
+            @click="scrollToSection(item.id)"
+          >
             {{ item.label }}
           </button>
         </li>

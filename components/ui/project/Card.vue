@@ -9,46 +9,32 @@ defineProps<{
 <template>
   <div class="project-card">
     <div class="project-card__inner">
-      <div class="project-card__face front">
-        <div v-if="project.thumbnail" class="project-card__thumbnail">
-          <span class="thumbnail-img">
-            <img :src="project.thumbnail" :alt="project.title" loading="lazy" />
-          </span>
-        </div>
-        <div class="project-card__content" aria-hidden="true">
-          <h3 class="project-card__title">
-            {{ project.title }}
-          </h3>
-
-          <p class="project-card__description">
-            {{ project.description }}
-          </p>
-
-          <ul class="project-card__stack">
-            <li
-              v-for="tech in project.stack"
-              :key="tech"
-              class="project-card__tag"
-            >
-              {{ tech }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="project-card__face back">
+      <div class="project-card__face front" aria-hidden="true">
         <div v-if="project.thumbnail" class="project-card__thumbnail">
           <span class="thumbnail-img">
             <img :src="project.thumbnail" :alt="project.title" loading="lazy" />
           </span>
         </div>
         <div class="project-card__content">
-          <h3 class="project-card__title">
-            {{ project.title }}
-          </h3>
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
+          <ul class="project-card__stack">
+            <li v-for="tech in project.stack" :key="tech" class="project-card__tag">
+              {{ tech }}
+            </li>
+          </ul>
+        </div>
+      </div>
 
-          <p class="project-card__description">
-            {{ project.description }}
-          </p>
+      <div class="project-card__face back">
+        <div v-if="project.thumbnail" class="project-card__thumbnail" aria-hidden="true">
+          <span class="thumbnail-img">
+            <img :src="project.thumbnail" alt="" />
+          </span>
+        </div>
+        <div class="project-card__content">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
 
           <dl class="project-card__detail">
             <dt>Role</dt>
@@ -56,14 +42,14 @@ defineProps<{
             <dt>What I Did</dt>
             <dd>
               <ul>
-                <li v-for="item in project.detail.highlights">
+                <li v-for="(item, index) in project.detail.highlights" :key="index">
                   {{ item }}
                 </li>
               </ul>
             </dd>
             <template v-if="project.detail?.duration">
               <dt>Duration</dt>
-              <dd>{{ project.detail?.duration }}</dd>
+              <dd>{{ project.detail.duration }}</dd>
             </template>
           </dl>
 
@@ -80,7 +66,8 @@ defineProps<{
   min-height: 58vh;
 }
 
-.project-card:hover .project-card__inner {
+.project-card:hover .project-card__inner,
+.project-card:focus-within .project-card__inner {
   transform: rotateY(180deg);
 }
 

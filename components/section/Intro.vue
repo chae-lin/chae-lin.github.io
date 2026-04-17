@@ -11,6 +11,13 @@ const objectLine = ref(null);
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion) {
+    gsap.set([titleSub.value, titleMain.value, quotes01.value, quotes02.value, objectLine.value], { opacity: 1 });
+    return;
+  }
+
   gsap.set(
     [
       titleSub.value,
@@ -129,9 +136,9 @@ onUnmounted(() => {
       </h3>
       <h2 ref="titleMain">
         <span class="sr-only">portfolio</span>
-        <i ref="quotes01" class="quotes-01" />
-        <i ref="quotes02" class="quotes-02" />
-        <i ref="objectLine" class="object-line" />
+        <i ref="quotes01" class="quotes-01" aria-hidden="true" />
+        <i ref="quotes02" class="quotes-02" aria-hidden="true" />
+        <i ref="objectLine" class="object-line" aria-hidden="true" />
       </h2>
     </div>
   </section>
