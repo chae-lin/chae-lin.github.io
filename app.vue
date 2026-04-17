@@ -38,6 +38,7 @@ useSeoMeta({
     <LayoutHeader />
     <NuxtPage />
     <LayoutFooter />
+    <UiBackToTop />
   </div>
 </template>
 
