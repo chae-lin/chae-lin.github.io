@@ -1,3 +1,5 @@
+import { navItems } from "~/assets/data/navigation";
+
 export const useActiveSection = () => {
   const activeSection = ref("");
 
@@ -15,7 +17,7 @@ export const useActiveSection = () => {
       }
     );
 
-    ["intro", "projects", "career"].forEach((id) => {
+    ["intro", ...navItems.map((item) => item.id)].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });

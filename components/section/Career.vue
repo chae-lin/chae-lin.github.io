@@ -2,9 +2,10 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { careers } from "~/assets/data/career";
+import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
 
 const sectionRef = ref<HTMLElement | null>(null);
-const titleRef = ref<any>(null);
+const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
 
 const activeIndex = ref(careers.length - 1);
 

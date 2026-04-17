@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { navItems } from "~/assets/data/navigation";
+
 const { activeSection } = useActiveSection();
 
 const isScrolled = ref(false);
@@ -23,31 +25,29 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header :class="{ 'is-scrolled': isScrolled }">
+  <header
+    class="sticky top-0 left-0 right-0 h-[40px] z-[100] md:h-[60px]"
+    :class="{ 'is-scrolled': isScrolled }"
+  >
     <h1 class="sr-only">chaelin portfolio</h1>
-    <ul>
-      <li
-        role="button"
-        :class="{ active: activeSection === 'projects' }"
-        @click="scrollToSection('projects')"
-      >
-        Projects
-      </li>
-      <li
-        role="button"
-        :class="{ active: activeSection === 'career' }"
-        @click="scrollToSection('career')"
-      >
-        Career
-      </li>
-    </ul>
+    <nav>
+      <ul class="flex items-center h-[40px] gap-[20px] px-[20px] text-[16px] text-[#7a7a7a] md:h-[60px] md:px-[40px] md:text-[20px]">
+        <li
+          v-for="item in navItems"
+          :key="item.id"
+          class="relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:rounded-2xl after:h-[2px] md:after:h-[4px]"
+          :class="{ 'text-[#f08b89] after:bg-[#f08b89]': activeSection === item.id }"
+        >
+          <button type="button" @click="scrollToSection(item.id)">
+            {{ item.label }}
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
 <style scoped>
-header {
-  @apply sticky top-0 left-0 right-0 h-[40px] z-[100] md:h-[60px];
-}
 header.is-scrolled {
   background: linear-gradient(
     to bottom,
@@ -58,20 +58,5 @@ header.is-scrolled {
   -webkit-backdrop-filter: blur(12px);
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-}
-header ul {
-  @apply flex items-center h-full gap-[20px] px-[20px] text-[16px] md:px-[40px] md:text-[20px] text-[#7a7a7a];
-}
-header li {
-  @apply relative;
-}
-header li.active {
-  @apply text-[#f08b89];
-}
-header li:after {
-  @apply content-[''] absolute left-0 right-0 bottom-0 rounded-2xl h-[2px] md:h-[4px];
-}
-header li.active:after {
-  @apply bg-[#f08b89];
 }
 </style>
