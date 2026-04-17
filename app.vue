@@ -1,7 +1,14 @@
 <script setup>
 useHead({
-  meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
-  link: [{ rel: "icon", href: "/images/favicon.png" }],
+  meta: [
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    { name: "author", content: "김채린" },
+    { name: "theme-color", content: "#f08b89" },
+  ],
+  link: [
+    { rel: "icon", href: "/images/favicon.png" },
+    { rel: "canonical", href: "https://chae-lin.github.io/" },
+  ],
   htmlAttrs: {
     lang: "ko",
   },
