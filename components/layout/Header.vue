@@ -67,7 +67,7 @@ onUnmounted(() => {
       >
         <span
           aria-hidden="true"
-          class="absolute inset-0 bg-[url('/images/header/img-sun.png')] bg-contain bg-center bg-no-repeat grayscale transition-all duration-500 ease-in-out group-hover:grayscale-0"
+          class="absolute inset-0 bg-[url('/images/header/img-sun.webp')] bg-contain bg-center bg-no-repeat grayscale transition-all duration-500 ease-in-out group-hover:grayscale-0"
           :class="
             isDark
               ? 'translate-x-full translate-y-full opacity-0'
@@ -76,7 +76,7 @@ onUnmounted(() => {
         />
         <span
           aria-hidden="true"
-          class="absolute inset-0 bg-[url('/images/header/img-moon.png')] bg-contain bg-center bg-no-repeat grayscale transition-all duration-500 ease-in-out group-hover:grayscale-0"
+          class="absolute inset-0 bg-[url('/images/header/img-moon.webp')] bg-contain bg-center bg-no-repeat grayscale transition-all duration-500 ease-in-out group-hover:grayscale-0"
           :class="
             isDark
               ? 'translate-x-0 translate-y-0 opacity-100'

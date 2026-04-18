@@ -47,7 +47,7 @@ export const projects: ProjectItem[] = [
   {
     title: "LORDNINE Official Website",
     description: "로드나인 홈페이지 구축 및 라이브 서비스 운영",
-    thumbnail: "/images/projects/l9-asia.jpg",
+    thumbnail: "/images/projects/l9-asia.webp",
     stack: ["Nuxt 3", "Vue 3", "TypeScript", "Pinia", "SCSS", "i18n"],
     detail: {
       role: "Frontend Developer, Markup Developer",
@@ -68,7 +68,7 @@ export const projects: ProjectItem[] = [
   {
     title: "Epic Seven Official Website",
     description: "에픽세븐 홈페이지 리뉴얼 및 프로모션 페이지 개발",
-    thumbnail: "/images/projects/epic7.jpg",
+    thumbnail: "/images/projects/epic7.webp",
     stack: [
       "Nuxt 3",
       "Vue 3",
@@ -93,8 +93,16 @@ export const projects: ProjectItem[] = [
   {
     title: "Blue Protocol Brand Website",
     description: "블루프로토콜 브랜드 홈페이지 및 사전예약 페이지 제작",
-    thumbnail: "/images/projects/blueprotocol.png",
-    stack: ["HTML", "Gulp", "SCSS", "GSAP", "fullpage.js", "jQuery", "Responsive Web"],
+    thumbnail: "/images/projects/blueprotocol.webp",
+    stack: [
+      "HTML",
+      "Gulp",
+      "SCSS",
+      "GSAP",
+      "fullpage.js",
+      "jQuery",
+      "Responsive Web",
+    ],
     detail: {
       role: "Markup Developer",
       highlights: [
@@ -110,7 +118,7 @@ export const projects: ProjectItem[] = [
   {
     title: "TalesRunner Official Website",
     description: "테일즈런너 공식 홈페이지 리뉴얼 및 이벤트 페이지 운영",
-    thumbnail: "/images/projects/tr.jpg",
+    thumbnail: "/images/projects/tr.webp",
     stack: ["HTML", "Gulp", "SCSS", "jQuery", "EJS"],
     detail: {
       role: "Markup Developer",
@@ -146,7 +154,7 @@ export const projects: ProjectItem[] = [
   {
     title: "JAM LIVE",
     description: "실시간 참여형 라이브 방송 서비스 웹사이트",
-    thumbnail: "/images/projects/jam.png",
+    thumbnail: "/images/projects/jam.webp",
     stack: ["HTML", "SCSS", "CSS Animation", "Responsive Web"],
     detail: {
       role: "Markup Developer",
@@ -164,7 +172,7 @@ export const projects: ProjectItem[] = [
     title: "BT21 BABY",
     description:
       "LINE FRIENDS와 BTS 협업 캐릭터 브랜드 'BT21 BABY' 프로모션 웹사이트",
-    thumbnail: "/images/projects/bt21.png",
+    thumbnail: "/images/projects/bt21.webp",
     stack: ["HTML", "Gulp", "SCSS", "CSS Animation"],
     detail: {
       role: "Markup Developer",
@@ -181,7 +189,7 @@ export const projects: ProjectItem[] = [
   {
     title: "DEVIEW 2018",
     description: "네이버 개발자 컨퍼런스 DEVIEW 2018 공식 웹사이트",
-    thumbnail: "/images/projects/deview.png",
+    thumbnail: "/images/projects/deview.webp",
     stack: ["HTML", "SCSS", "CSS Animation", "Responsive Web", "Gulp"],
     detail: {
       role: "Markup Developer",

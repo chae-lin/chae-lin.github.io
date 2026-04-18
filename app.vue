@@ -48,7 +48,7 @@ onMounted(() => init());
 
 <style scoped>
 .app {
-  @apply flex flex-col min-w-[320px] min-h-[100vh] bg-[url(/images/common/bg_light.jpeg)] bg-repeat dark:[background-image:url(/images/common/bg_dark.jpg)];
+  @apply flex flex-col min-w-[320px] min-h-[100vh] bg-[url(/images/common/bg_light.webp)] bg-repeat dark:[background-image:url(/images/common/bg_dark.webp)];
 }
 main {
   @apply flex-1;
