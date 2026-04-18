@@ -1,35 +1,50 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "~/assets/data/projects";
-import type UiSectionTitle from "~/components/ui/SectionTitle.vue";
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { projects } from '~/assets/data/projects'
+import type UiSectionTitle from '~/components/ui/SectionTitle.vue'
 
-const sectionRef = ref<HTMLElement | null>(null);
-const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null);
-const { prefersReducedMotion, createScrollTimeline } = useMotion();
+const sectionRef = ref<HTMLElement | null>(null)
+const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null)
+const { prefersReducedMotion, createScrollTimeline } = useMotion()
 
 onMounted(async () => {
-  gsap.registerPlugin(ScrollTrigger);
-  await nextTick();
+  gsap.registerPlugin(ScrollTrigger)
+  await nextTick()
 
-  const sectionEl = sectionRef.value;
-  if (!sectionEl || prefersReducedMotion) return;
+  const sectionEl = sectionRef.value
+  if (!sectionEl || prefersReducedMotion) return
 
-  const titleEl = titleRef.value?.$el ?? titleRef.value;
-  const cards = gsap.utils.toArray(sectionEl.querySelectorAll(".project-card"));
+  const titleEl = titleRef.value?.$el ?? titleRef.value
+  const cards = gsap.utils.toArray(sectionEl.querySelectorAll('.project-card'))
 
-  gsap.set(titleEl, { opacity: 0, y: 30 });
-  gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 });
+  gsap.set(titleEl, { opacity: 0, y: 30 })
+  gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 })
 
-  const tl = createScrollTimeline(sectionEl);
+  const tl = createScrollTimeline(sectionEl)
 
-  tl.fromTo(titleEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" })
-    .fromTo(cards, { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out", stagger: 0.1 }, "-=0.1");
-});
+  tl.fromTo(
+    titleEl,
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+  ).fromTo(
+    cards,
+    { opacity: 0, y: 30, scale: 0.96 },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.5,
+      ease: 'power3.out',
+      stagger: 0.1
+    },
+    '-=0.1'
+  )
+})
 
 onUnmounted(() => {
-  ScrollTrigger.getAll().forEach((t) => t.kill());
-});
+  ScrollTrigger.getAll().forEach((t) => t.kill())
+})
 </script>
 
 <template>

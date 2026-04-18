@@ -1,7 +1,8 @@
 @font-face {
-  font-family: "Jua";
-  src: url("/fonts/Jua-Regular.woff2") format("woff2"),
-    url("/fonts/Jua-Regular.woff") format("woff");
+  font-family: 'Jua';
+  src:
+    url('/fonts/Jua-Regular.woff2') format('woff2'),
+    url('/fonts/Jua-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 
-const titleMain = ref(null);
-const titleSub = ref(null);
-const quotes01 = ref(null);
-const quotes02 = ref(null);
-const objectLine = ref(null);
+const titleMain = ref(null)
+const titleSub = ref(null)
+const quotes01 = ref(null)
+const quotes02 = ref(null)
+const objectLine = ref(null)
 
-const { prefersReducedMotion } = useMotion();
+const { prefersReducedMotion } = useMotion()
 
 onMounted(() => {
   if (prefersReducedMotion) {
-    gsap.set([titleSub.value, titleMain.value, quotes01.value, quotes02.value, objectLine.value], { opacity: 1 });
-    return;
+    gsap.set(
+      [
+        titleSub.value,
+        titleMain.value,
+        quotes01.value,
+        quotes02.value,
+        objectLine.value
+      ],
+      { opacity: 1 }
+    )
+    return
   }
 
   gsap.set(
@@ -21,26 +30,26 @@ onMounted(() => {
       titleMain.value,
       quotes01.value,
       quotes02.value,
-      objectLine.value,
+      objectLine.value
     ],
     {
-      opacity: 0,
-    },
-  );
+      opacity: 0
+    }
+  )
 
-  const tl = gsap.timeline({ defaults: { ease: "back.out(1.7)" } });
+  const tl = gsap.timeline({ defaults: { ease: 'back.out(1.7)' } })
 
   tl.to(titleSub.value, {
     opacity: 1,
     y: 0,
     duration: 0.7,
-    ease: "back.out(2)",
+    ease: 'back.out(2)'
   })
     .fromTo(
       titleSub.value,
       { y: -40 },
-      { y: 0, duration: 0.7, ease: "back.out(2)" },
-      "<", // 동시에
+      { y: 0, duration: 0.7, ease: 'back.out(2)' },
+      '<' // 동시에
     )
     .fromTo(
       titleMain.value,
@@ -50,9 +59,9 @@ onMounted(() => {
         y: 0,
         scale: 1,
         duration: 0.8,
-        ease: "elastic.out(1, 0.6)",
+        ease: 'elastic.out(1, 0.6)'
       },
-      "-=0.3",
+      '-=0.3'
     )
     .fromTo(
       quotes01.value,
@@ -63,9 +72,9 @@ onMounted(() => {
         rotation: 0,
         scale: 1,
         duration: 0.6,
-        ease: "back.out(2)",
+        ease: 'back.out(2)'
       },
-      "-=0.5",
+      '-=0.5'
     )
     .fromTo(
       quotes02.value,
@@ -76,43 +85,43 @@ onMounted(() => {
         rotation: 0,
         scale: 1,
         duration: 0.6,
-        ease: "back.out(2)",
+        ease: 'back.out(2)'
       },
-      "<", // quotes-01과 동시에
+      '<' // quotes-01과 동시에
     )
     .fromTo(
       objectLine.value,
       { opacity: 0, scale: 0, rotation: -20 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(3)" },
-      "-=0.1",
+      { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(3)' },
+      '-=0.1'
     )
     .to(objectLine.value, {
       rotation: 10,
       duration: 0.15,
-      ease: "power1.inOut",
+      ease: 'power1.inOut',
       yoyo: true,
-      repeat: 3,
-    });
+      repeat: 3
+    })
 
   gsap.to(quotes01.value, {
     y: -8,
     rotation: -5,
     duration: 2.2,
-    ease: "sine.inOut",
+    ease: 'sine.inOut',
     yoyo: true,
     repeat: -1,
-    delay: 1.5,
-  });
+    delay: 1.5
+  })
   gsap.to(quotes02.value, {
     y: -6,
     rotation: 5,
     duration: 2.6,
-    ease: "sine.inOut",
+    ease: 'sine.inOut',
     yoyo: true,
     repeat: -1,
-    delay: 1.8,
-  });
-});
+    delay: 1.8
+  })
+})
 
 onUnmounted(() => {
   gsap.killTweensOf([
@@ -120,9 +129,9 @@ onUnmounted(() => {
     titleSub.value,
     quotes01.value,
     quotes02.value,
-    objectLine.value,
-  ]);
-});
+    objectLine.value
+  ])
+})
 </script>
 
 <template>

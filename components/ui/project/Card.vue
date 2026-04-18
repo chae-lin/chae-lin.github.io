@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { ProjectItem } from "~/assets/data/projects";
+import type { ProjectItem } from '~/assets/data/projects'
 
 defineProps<{
-  project: ProjectItem;
-}>();
+  project: ProjectItem
+}>()
 </script>
 
 <template>
@@ -16,10 +16,18 @@ defineProps<{
           </span>
         </div>
         <div class="project-card__content">
-          <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__description">{{ project.description }}</p>
+          <h3 class="project-card__title">
+            {{ project.title }}
+          </h3>
+          <p class="project-card__description">
+            {{ project.description }}
+          </p>
           <ul class="project-card__stack">
-            <li v-for="tech in project.stack" :key="tech" class="project-card__tag">
+            <li
+              v-for="tech in project.stack"
+              :key="tech"
+              class="project-card__tag"
+            >
               {{ tech }}
             </li>
           </ul>
@@ -27,14 +35,22 @@ defineProps<{
       </div>
 
       <div class="project-card__face back">
-        <div v-if="project.thumbnail" class="project-card__thumbnail" aria-hidden="true">
+        <div
+          v-if="project.thumbnail"
+          class="project-card__thumbnail"
+          aria-hidden="true"
+        >
           <span class="thumbnail-img">
             <img :src="project.thumbnail" alt="" />
           </span>
         </div>
         <div class="project-card__content">
-          <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__description">{{ project.description }}</p>
+          <h3 class="project-card__title">
+            {{ project.title }}
+          </h3>
+          <p class="project-card__description">
+            {{ project.description }}
+          </p>
 
           <dl class="project-card__detail">
             <dt>Role</dt>
@@ -42,7 +58,10 @@ defineProps<{
             <dt>What I Did</dt>
             <dd>
               <ul>
-                <li v-for="(item, index) in project.detail.highlights" :key="index">
+                <li
+                  v-for="(item, index) in project.detail.highlights"
+                  :key="index"
+                >
                   {{ item }}
                 </li>
               </ul>
@@ -100,7 +119,11 @@ defineProps<{
   background-color: transparent;
 }
 .project-card__face.back .project-card__thumbnail::after {
-  background-color: color-mix(in srgb, var(--color-surface-default) 70%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-default) 70%,
+    transparent
+  );
 }
 
 .project-card__thumbnail {

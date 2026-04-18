@@ -1,43 +1,43 @@
 <script setup lang="ts">
-import type { CareerItem } from "~/assets/data/career";
+import type { CareerItem } from '~/assets/data/career'
 
 const props = defineProps<{
-  activeIndex: number;
-  careers: CareerItem[];
-}>();
+  activeIndex: number
+  careers: CareerItem[]
+}>()
 
 const formatYearMonth = (dateStr: string): string => {
-  if (!dateStr) return "";
-  const [year, month] = dateStr.split("-");
-  return `${year}.${month}`;
-};
+  if (!dateStr) return ''
+  const [year, month] = dateStr.split('-')
+  return `${year}.${month}`
+}
 
-const formatRange = (start: CareerItem["start"], end: CareerItem["end"]) => {
-  const startDate = formatYearMonth(start);
-  const endDate = end ? formatYearMonth(end) : "Now";
-  return `${startDate} ~ ${endDate}`;
-};
+const formatRange = (start: CareerItem['start'], end: CareerItem['end']) => {
+  const startDate = formatYearMonth(start)
+  const endDate = end ? formatYearMonth(end) : 'Now'
+  return `${startDate} ~ ${endDate}`
+}
 
-const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
-  const startDate = new Date(start);
-  const endDate = end ? new Date(end) : new Date();
+const getDiffPeriod = (start: CareerItem['start'], end: CareerItem['end']) => {
+  const startDate = new Date(start)
+  const endDate = end ? new Date(end) : new Date()
 
   // 1. 전체 개월 수 차이 계산
-  let totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-  totalMonths += endDate.getMonth() - startDate.getMonth();
+  let totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12
+  totalMonths += endDate.getMonth() - startDate.getMonth()
 
   // 2. 일(day) 단위를 체크해서 아직 한 달이 안 채워졌다면 1개월 뺌
   if (endDate.getDate() < startDate.getDate()) {
-    totalMonths--;
+    totalMonths--
   }
 
   // 3. 년과 월로 분리
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
+  const years = Math.floor(totalMonths / 12)
+  const months = totalMonths % 12
 
   // 4. 결과 리턴
-  return `${years > 0 ? years + "y " : ""}${months}mo`;
-};
+  return `${years > 0 ? years + 'y ' : ''}${months}mo`
+}
 </script>
 
 <template>
@@ -50,7 +50,7 @@ const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
         :key="career.company"
         :class="[
           'flex flex-col col-start-1 row-start-1 transition-opacity',
-          props.activeIndex === index ? 'opacity-100' : 'opacity-0',
+          props.activeIndex === index ? 'opacity-100' : 'opacity-0'
         ]"
         :aria-hidden="props.activeIndex !== index ? 'true' : undefined"
       >

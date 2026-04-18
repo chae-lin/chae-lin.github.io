@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { navItems } from "~/assets/data/navigation";
+import { navItems } from '~/assets/data/navigation'
 
-const { activeSection } = useActiveSection();
+const { activeSection } = useActiveSection()
 
-const { isDark, toggle: toggleDark } = useDarkMode();
+const { isDark, toggle: toggleDark } = useDarkMode()
 
-const isScrolled = ref(false);
+const isScrolled = ref(false)
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 0;
-};
+  isScrolled.value = window.scrollY > 0
+}
 
 const scrollToSection = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-};
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 
 onMounted(() => {
-  handleScroll();
-  window.addEventListener("scroll", handleScroll, { passive: true });
-});
+  handleScroll()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
@@ -41,7 +41,7 @@ onUnmounted(() => {
           :key="item.id"
           class="relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:rounded-2xl after:h-[2px] md:after:h-[4px]"
           :class="{
-            'text-[#f08b89] after:bg-[#f08b89]': activeSection === item.id,
+            'text-[#f08b89] after:bg-[#f08b89]': activeSection === item.id
           }"
         >
           <button

@@ -1,33 +1,33 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxtjs/tailwindcss"],
+  modules: ['@nuxt/eslint', '@nuxtjs/tailwindcss'],
+
+  ssr: true,
 
   devtools: {
-    enabled: true,
+    enabled: true
   },
 
   css: [
-    "~/assets/css/reset.css",
-    "~/assets/css/font.css",
-    "~/assets/css/theme.css",
-    "~/assets/css/app.css",
+    '~/assets/css/reset.css',
+    '~/assets/css/font.css',
+    '~/assets/css/theme.css',
+    '~/assets/css/app.css'
   ],
 
   routeRules: {
-    "/": { prerender: true },
+    '/': { prerender: true }
   },
 
-  compatibilityDate: "2025-01-15",
+  compatibilityDate: '2025-01-15',
+  nitro: { preset: 'github_pages' },
 
   eslint: {
     config: {
       stylistic: {
-        commaDangle: "never",
-        braceStyle: "1tbs",
-      },
-    },
-  },
-
-  ssr: true,
-  nitro: { preset: "github_pages" },
-});
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
+  }
+})
