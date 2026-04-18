@@ -85,7 +85,7 @@ defineProps<{
   backface-visibility: hidden;
   border-radius: 20px;
   border: 2px solid #91b0a6;
-  background-color: white;
+  background-color: var(--color-surface-default);
 }
 
 .project-card__face.back {
@@ -94,7 +94,13 @@ defineProps<{
 
 .project-card__face.back .project-card__thumbnail {
   @apply absolute left-[50%] translate-x-[-50%] h-full blur
-  after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-white/70;
+  after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full;
+  /* thumbnail overlay uses surface color with opacity */
+  --tw-bg-opacity: 0.7;
+  background-color: transparent;
+}
+.project-card__face.back .project-card__thumbnail::after {
+  background-color: color-mix(in srgb, var(--color-surface-default) 70%, transparent);
 }
 
 .project-card__thumbnail {
@@ -110,11 +116,11 @@ defineProps<{
 }
 
 .project-card__title {
-  @apply mb-1 text-xl font-semibold;
+  @apply mb-1 text-xl font-semibold text-fg-default;
 }
 
 .project-card__description {
-  @apply text-sm leading-relaxed text-gray-600;
+  @apply text-sm leading-relaxed text-fg-subtle;
 }
 
 .project-card__stack {
@@ -130,11 +136,11 @@ defineProps<{
 }
 
 .project-card__detail dd {
-  @apply text-gray-500 text-sm;
+  @apply text-fg-subtle text-sm;
 }
 
 .project-card__detail li {
   @apply relative pl-2
-  before:content-[''] before:absolute before:top-[7px] before:left-0 before:w-1 before:h-1 before:rounded-full before:bg-gray-500;
+  before:content-[''] before:absolute before:top-[7px] before:left-0 before:w-1 before:h-1 before:rounded-full before:bg-fg-subtle;
 }
 </style>

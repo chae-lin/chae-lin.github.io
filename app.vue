@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+const { init } = useDarkMode();
+
 useHead({
   meta: [
     { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -30,6 +32,8 @@ useSeoMeta({
   twitterImage: ogImage,
   twitterCard: "summary_large_image",
 });
+
+onMounted(() => init());
 </script>
 
 <template>
@@ -44,7 +48,7 @@ useSeoMeta({
 
 <style scoped>
 .app {
-  @apply flex flex-col min-w-[320px] min-h-[100vh] bg-[url(/images/intro/bg.jpeg)] bg-repeat;
+  @apply flex flex-col min-w-[320px] min-h-[100vh] bg-[url(/images/common/bg_light.jpeg)] bg-repeat dark:[background-image:url(/images/common/bg_dark.jpg)];
 }
 main {
   @apply flex-1;

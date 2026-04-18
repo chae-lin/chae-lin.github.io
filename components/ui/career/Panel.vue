@@ -42,7 +42,7 @@ const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
 
 <template>
   <div
-    class="relative rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
+    class="relative rounded-2xl border border-border-default bg-surface-default p-5 shadow-sm"
   >
     <div class="grid grid-cols-1">
       <div
@@ -54,20 +54,20 @@ const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
         ]"
         :aria-hidden="props.activeIndex !== index ? 'true' : undefined"
       >
-        <h4 class="text-lg font-semibold">
+        <h4 class="text-lg font-semibold text-fg-default">
           {{ career.company }}
-          <span class="ml-2 align-middle text-xs font-medium text-gray-500">
+          <span class="ml-2 align-middle text-xs font-medium text-fg-subtle">
             {{ formatRange(career.start, career.end) }}
           </span>
         </h4>
 
-        <p v-if="career.role" class="mt-1 text-sm text-gray-700">
+        <p v-if="career.role" class="mt-1 text-sm text-fg-subtle">
           {{ career.role }}
         </p>
 
         <ul
           v-if="career.summary?.length"
-          class="mt-3 mb-4 space-y-1 text-sm text-gray-700"
+          class="mt-3 mb-4 space-y-1 text-sm text-fg-subtle"
         >
           <li
             v-for="(summary, summaryIndex) in career.summary"
@@ -85,15 +85,15 @@ const getDiffPeriod = (start: CareerItem["start"], end: CareerItem["end"]) => {
           <span
             v-for="tech in career.tech"
             :key="tech"
-            class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700"
+            class="rounded-full bg-surface-subtle px-3 py-1 text-xs text-fg-default"
           >
             {{ tech }}
           </span>
         </div>
 
         <div class="absolute right-5 text-right">
-          <div class="text-sm text-gray-500">Duration</div>
-          <div class="text-basic font-medium">
+          <div class="text-sm text-fg-subtle">Duration</div>
+          <div class="text-basic font-medium text-fg-default">
             {{ getDiffPeriod(career.start, career.end) }}
           </div>
         </div>

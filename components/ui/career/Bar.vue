@@ -65,7 +65,7 @@ const setActive = (index: number) => emit("update:activeIndex", index);
       @click="setActive(index)"
     >
       <span
-        class="text-base font-medium text-gray-700 opacity-60 transition group-hover:opacity-100"
+        class="text-base font-medium text-fg-default opacity-60 transition group-hover:opacity-100"
         :class="{ 'opacity-100': index === activeIndex }"
       >
         {{ item.company }}

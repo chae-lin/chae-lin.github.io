@@ -42,7 +42,7 @@ onUnmounted(() => {
     <UiSectionTitle ref="titleRef" title="About" />
 
     <p
-      class="about-bio mt-4 mb-8 text-sm leading-7 text-gray-600 md:text-base md:leading-8"
+      class="about-bio mt-4 mb-8 text-sm leading-7 text-fg-subtle md:text-base md:leading-8"
     >
       8년의 마크업 전문성 위에 프론트엔드 개발을 쌓았습니다.<br />
       Atomic Design 패턴 기반 컴포넌트 설계부터 성능 최적화까지, 인터페이스의
@@ -53,13 +53,13 @@ onUnmounted(() => {
       <div
         v-for="stat in stats"
         :key="stat.label"
-        class="stat-card flex flex-col items-center justify-center flex-1 py-5 rounded-2xl border border-gray-200 bg-white shadow-sm"
+        class="stat-card flex flex-col items-center justify-center flex-1 py-5 rounded-2xl border border-border-default bg-surface-default shadow-sm"
       >
         <span class="text-3xl font-bold text-[#f08b89] md:text-4xl">{{
           stat.value
         }}</span>
         <span
-          class="mt-1 text-xs text-center text-gray-500 leading-5 whitespace-pre-line"
+          class="mt-1 text-xs text-center text-fg-subtle leading-5 whitespace-pre-line"
           >{{ stat.label }}</span
         >
       </div>

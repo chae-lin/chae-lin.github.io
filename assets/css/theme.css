@@ -1,0 +1,17 @@
+:root {
+  --color-surface-default: #ffffff;
+  --color-surface-subtle: #f3f4f6;
+  --color-border-default: #e5e7eb;
+  --color-fg-default: #000000;
+  --color-fg-subtle: #6b7280;
+  --color-fg-muted: #7a7a7a;
+}
+
+.dark {
+  --color-surface-default: #111827;
+  --color-surface-subtle: #1f2937;
+  --color-border-default: #374151;
+  --color-fg-default: #ffffff;
+  --color-fg-subtle: #9ca3af;
+  --color-fg-muted: #6b7280;
+}
