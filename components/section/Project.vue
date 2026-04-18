@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects } from '~/assets/data/projects'
 import type UiSectionTitle from '~/components/ui/SectionTitle.vue'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null)
-const { prefersReducedMotion, createScrollTimeline } = useMotion()
+const { prefersReducedMotion, loadGsap, createScrollTimeline } = useMotion()
 
 onMounted(async () => {
-  gsap.registerPlugin(ScrollTrigger)
   await nextTick()
 
   const sectionEl = sectionRef.value
   if (!sectionEl || prefersReducedMotion) return
 
+  const gsap = await loadGsap()
   const titleEl = titleRef.value?.$el ?? titleRef.value
   const cards = gsap.utils.toArray(sectionEl.querySelectorAll('.project-card'))
 
   gsap.set(titleEl, { opacity: 0, y: 30 })
   gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 })
 
-  const tl = createScrollTimeline(sectionEl)
+  const tl = await createScrollTimeline(sectionEl)
 
   tl.fromTo(
     titleEl,
@@ -42,7 +40,8 @@ onMounted(async () => {
   )
 })
 
-onUnmounted(() => {
+onUnmounted(async () => {
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
   ScrollTrigger.getAll().forEach((t) => t.kill())
 })
 </script>

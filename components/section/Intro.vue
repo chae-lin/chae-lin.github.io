@@ -1,93 +1,51 @@
 <script setup lang="ts">
-import { gsap } from 'gsap'
-
 const titleMain = ref(null)
 const titleSub = ref(null)
 const quotes01 = ref(null)
 const quotes02 = ref(null)
 const objectLine = ref(null)
 
-const { prefersReducedMotion } = useMotion()
+const { prefersReducedMotion, loadGsap } = useMotion()
 
-onMounted(() => {
+onMounted(async () => {
+  const gsap = await loadGsap()
+
+  const els = [
+    titleSub.value,
+    titleMain.value,
+    quotes01.value,
+    quotes02.value,
+    objectLine.value
+  ]
+
   if (prefersReducedMotion) {
-    gsap.set(
-      [
-        titleSub.value,
-        titleMain.value,
-        quotes01.value,
-        quotes02.value,
-        objectLine.value
-      ],
-      { opacity: 1 }
-    )
+    gsap.set(els, { opacity: 1 })
     return
   }
 
-  gsap.set(
-    [
-      titleSub.value,
-      titleMain.value,
-      quotes01.value,
-      quotes02.value,
-      objectLine.value
-    ],
-    {
-      opacity: 0
-    }
-  )
+  gsap.set(els, { opacity: 0 })
 
   const tl = gsap.timeline({ defaults: { ease: 'back.out(1.7)' } })
 
-  tl.to(titleSub.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.7,
-    ease: 'back.out(2)'
-  })
-    .fromTo(
-      titleSub.value,
-      { y: -40 },
-      { y: 0, duration: 0.7, ease: 'back.out(2)' },
-      '<' // 동시에
-    )
+  tl.to(titleSub.value, { opacity: 1, y: 0, duration: 0.7, ease: 'back.out(2)' })
+    .fromTo(titleSub.value, { y: -40 }, { y: 0, duration: 0.7, ease: 'back.out(2)' }, '<')
     .fromTo(
       titleMain.value,
       { opacity: 0, y: 60, scale: 0.85 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: 'elastic.out(1, 0.6)'
-      },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'elastic.out(1, 0.6)' },
       '-=0.3'
     )
     .fromTo(
       quotes01.value,
       { opacity: 0, x: -60, rotation: -45, scale: 0.5 },
-      {
-        opacity: 1,
-        x: 0,
-        rotation: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'back.out(2)'
-      },
+      { opacity: 1, x: 0, rotation: 0, scale: 1, duration: 0.6, ease: 'back.out(2)' },
       '-=0.5'
     )
     .fromTo(
       quotes02.value,
       { opacity: 0, x: 60, rotation: 45, scale: 0.5 },
-      {
-        opacity: 1,
-        x: 0,
-        rotation: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'back.out(2)'
-      },
-      '<' // quotes-01과 동시에
+      { opacity: 1, x: 0, rotation: 0, scale: 1, duration: 0.6, ease: 'back.out(2)' },
+      '<'
     )
     .fromTo(
       objectLine.value,
@@ -123,7 +81,8 @@ onMounted(() => {
   })
 })
 
-onUnmounted(() => {
+onUnmounted(async () => {
+  const gsap = await loadGsap()
   gsap.killTweensOf([
     titleMain.value,
     titleSub.value,
@@ -158,13 +117,13 @@ onUnmounted(() => {
   @apply relative w-full;
 }
 h2 {
-  @apply relative mt-[-4vw] pt-[20vw] bg-[url(/images/intro/title-main.webp)] bg-no-repeat bg-contain bg-center;
+  @apply relative mt-[-4vw] pt-[20vw] bg-[url(/images/intro/title-main.webp)] bg-no-repeat bg-contain bg-center opacity-0;
 }
 h3 {
-  @apply pt-[16vw] bg-[url(/images/intro/title-sub.webp)] bg-no-repeat bg-contain bg-center;
+  @apply pt-[16vw] bg-[url(/images/intro/title-sub.webp)] bg-no-repeat bg-contain bg-center opacity-0;
 }
 i {
-  @apply absolute left-[50%] bg-[url(/images/intro/object.webp)] bg-no-repeat bg-[45vw_auto];
+  @apply absolute left-[50%] bg-[url(/images/intro/object.webp)] bg-no-repeat bg-[45vw_auto] opacity-0;
 }
 .quotes-01 {
   @apply top-[0] w-[9vw] h-[9vw] mt-[-2vw] ml-[-38vw] bg-[-26vw_0];

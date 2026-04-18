@@ -1,13 +1,19 @@
-import gsap from 'gsap'
-
 export const useMotion = () => {
-  // OS/브라우저의 "모션 줄이기" 설정 감지
   const prefersReducedMotion = import.meta.client
     ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
     : false
 
-  // 섹션 공통 ScrollTrigger 타임라인 생성
-  const createScrollTimeline = (trigger: Element) => {
+  const loadGsap = async () => {
+    const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+      import('gsap'),
+      import('gsap/ScrollTrigger')
+    ])
+    gsap.registerPlugin(ScrollTrigger)
+    return gsap
+  }
+
+  const createScrollTimeline = async (trigger: Element) => {
+    const gsap = await loadGsap()
     return gsap.timeline({
       scrollTrigger: {
         trigger,
@@ -17,5 +23,5 @@ export const useMotion = () => {
     })
   }
 
-  return { prefersReducedMotion, createScrollTimeline }
+  return { prefersReducedMotion, loadGsap, createScrollTimeline }
 }

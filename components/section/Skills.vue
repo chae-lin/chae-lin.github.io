@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skillGroups } from '~/assets/data/skills'
 import type UiSectionTitle from '~/components/ui/SectionTitle.vue'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null)
-const { prefersReducedMotion, createScrollTimeline } = useMotion()
+const { prefersReducedMotion, loadGsap, createScrollTimeline } = useMotion()
 
 onMounted(async () => {
-  gsap.registerPlugin(ScrollTrigger)
   await nextTick()
 
   const sectionEl = sectionRef.value
   if (!sectionEl || prefersReducedMotion) return
 
+  const gsap = await loadGsap()
   const titleEl = titleRef.value?.$el ?? titleRef.value
   const groups = gsap.utils.toArray(sectionEl.querySelectorAll('.skill-group'))
 
   gsap.set(titleEl, { opacity: 0, y: 24 })
   gsap.set(groups, { opacity: 0, y: 20 })
 
-  const tl = createScrollTimeline(sectionEl)
+  const tl = await createScrollTimeline(sectionEl)
 
   tl.to(titleEl, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }).to(
     groups,
@@ -30,7 +28,8 @@ onMounted(async () => {
   )
 })
 
-onUnmounted(() => {
+onUnmounted(async () => {
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
   ScrollTrigger.getAll().forEach((t) => t.kill())
 })
 </script>

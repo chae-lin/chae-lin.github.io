@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { careers } from '~/assets/data/career'
 import type UiSectionTitle from '~/components/ui/SectionTitle.vue'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const titleRef = ref<InstanceType<typeof UiSectionTitle> | null>(null)
-const { prefersReducedMotion } = useMotion()
+const { prefersReducedMotion, loadGsap, createScrollTimeline } = useMotion()
 
 const activeIndex = ref(careers.length - 1)
 
@@ -18,6 +16,7 @@ watch(activeIndex, async () => {
   const panelEl = sectionEl.querySelector('.career-panel')
   if (!panelEl) return
 
+  const gsap = await loadGsap()
   gsap.fromTo(
     panelEl,
     { opacity: 0.6, y: 8 },
@@ -26,15 +25,14 @@ watch(activeIndex, async () => {
 })
 
 onMounted(async () => {
-  gsap.registerPlugin(ScrollTrigger)
   await nextTick()
 
   const sectionEl = sectionRef.value
   if (!sectionEl || prefersReducedMotion) return
 
+  const gsap = await loadGsap()
   const titleEl = titleRef.value?.$el ?? titleRef.value
 
-  // hook 클래스 기준으로 DOM 수집
   const barEl = sectionEl.querySelector('.career-bar')
   const panelEl = sectionEl.querySelector('.career-panel')
 
@@ -55,13 +53,7 @@ onMounted(async () => {
   if (panelCard) gsap.set(panelCard, { opacity: 0, y: 26, scale: 0.98 })
   if (panelLines.length) gsap.set(panelLines, { opacity: 0, y: 10 })
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionEl,
-      start: 'top 75%',
-      once: true
-    }
-  })
+  const tl = await createScrollTimeline(sectionEl)
 
   tl.fromTo(
     titleEl,
@@ -91,7 +83,8 @@ onMounted(async () => {
   }
 })
 
-onUnmounted(() => {
+onUnmounted(async () => {
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
   ScrollTrigger.getAll().forEach((t) => t.kill())
 })
 </script>
